@@ -1,0 +1,23 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme blog with Acme Callouts 1.4.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-callouts/acme-callouts.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Blog",
+				"acme_callouts_options": {
+					"default_type": "success",
+					"enable_shortcode": true
+				}
+			}
+		}
+	]
+}

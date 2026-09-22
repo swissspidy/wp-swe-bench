@@ -1,0 +1,35 @@
+.wp-block-acme-callout {
+	border-left: 4px solid #3858e9;
+	background: #f0f4ff;
+	padding: 1rem 1.25rem;
+	margin: 1.5rem 0;
+	border-radius: 2px;
+
+	&.is-type-success {
+		border-color: #00a32a;
+		background: #edfaef;
+	}
+
+	&.is-type-warning {
+		border-color: #dba617;
+		background: #fcf9e8;
+	}
+
+	&.is-type-danger {
+		border-color: #d63638;
+		background: #fcf0f1;
+	}
+}
+
+.wp-block-acme-callout__title {
+	font-weight: 700;
+	margin: 0 0 0.5rem;
+}
+
+.wp-block-acme-callout__body > :first-child {
+	margin-top: 0;
+}
+
+.wp-block-acme-callout__body > :last-child {
+	margin-bottom: 0;
+}

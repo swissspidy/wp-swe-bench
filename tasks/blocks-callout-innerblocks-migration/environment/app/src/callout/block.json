@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/callout",
+	"version": "1.4.0",
+	"title": "Callout",
+	"category": "text",
+	"icon": "megaphone",
+	"description": "Highlight a note, tip or warning.",
+	"keywords": [ "notice", "alert", "note" ],
+	"textdomain": "acme-callouts",
+	"attributes": {
+		"type": {
+			"type": "string",
+			"default": "info"
+		},
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".acme-callout__title"
+		},
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": ".acme-callout__content"
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
