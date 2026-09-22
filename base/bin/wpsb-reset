@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Restore the pristine site state (DB + uploads) captured at image build time.
+# Code under wp-content (plugins/themes) is NOT touched.
+set -euo pipefail
+src=/opt/wpsb/pristine
+[ -f "$src/.ht.sqlite" ] || { echo "wpsb-reset: no snapshot at $src" >&2; exit 1; }
+(cd / && sha256sum -c --quiet "$src/SHA256SUMS")
+was_running=0
+if wpsb-server status >/dev/null 2>&1; then was_running=1; wpsb-server stop; fi
+rm -f /wordpress/wp-content/database/.ht.sqlite /wordpress/wp-content/database/.ht.sqlite-*
+cp "$src/.ht.sqlite" /wordpress/wp-content/database/.ht.sqlite
+chmod u+w /wordpress/wp-content/database/.ht.sqlite
+rm -rf /wordpress/wp-content/uploads && tar -C /wordpress/wp-content -xf "$src/uploads.tar"
+chmod -R u+w /wordpress/wp-content/uploads
+rm -f /wordpress/wp-content/wpsb-mail.log /wordpress/wp-content/debug.log
+if [ "$was_running" = 1 ]; then wpsb-server start; fi
+echo "wpsb-reset: site restored to pristine state"

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Build-time provisioning for a task image. Run once from the task Dockerfile:
+#   1. install WordPress (native WP-CLI, SQLite)
+#   2. apply the task blueprint with WordPress Playground (if /opt/wpsb/task/blueprint.json exists)
+#   3. run the optional native seed script /opt/wpsb/task/seed.sh
+#   4. build JS (npm run build) in $WPSB_REPO if it has a build script
+#   5. snapshot the pristine DB + uploads
+#   6. turn $WPSB_REPO into a git repository with one "Initial import" commit
+set -euo pipefail
+TASK=/opt/wpsb/task
+BP="${1:-$TASK/blueprint.json}"
+REPO="${WPSB_REPO:-}"
+
+rm -f /wordpress/wp-content/database/.ht.sqlite*
+wp core install --url="${WPSB_URL:-http://127.0.0.1:9400}" --title="${WPSB_SITE_TITLE:-WP SWE Bench}" \
+  --admin_user=admin --admin_password=password --admin_email=admin@example.org --skip-email
+wp option update permalink_structure '/%postname%/' >/dev/null
+wp option update timezone_string 'UTC' >/dev/null
+wp rewrite flush >/dev/null
+
+# Wire up shared node_modules for any JS project (package.json) in the repo, before blueprints
+# or seeds run, so a starting-state build can happen during seeding if needed.
+if [ -n "$REPO" ] && [ -f "$REPO/package.json" ] && [ ! -e "$REPO/node_modules" ]; then
+  ln -s /opt/wpsb/node/node_modules "$REPO/node_modules"
+fi
+if [ -n "$REPO" ] && [ -f "$REPO/package.json" ] && jq -e '.scripts.build' "$REPO/package.json" >/dev/null; then
+  (cd "$REPO" && npm run build)
+fi
+
+if [ -f "$BP" ]; then
+  wpsb-playground run-blueprint --blueprint="$BP" --blueprint-may-read-adjacent-files --verbosity=normal
+fi
+if [ -x "$TASK/seed.sh" ]; then
+  (cd "$TASK" && ./seed.sh)
+fi
+wp cache flush >/dev/null 2>&1 || true
+wpsb-snapshot
+
+git config --global user.name "WP SWE Bench"
+git config --global user.email "bench@example.org"
+git config --global init.defaultBranch main
+git config --global --add safe.directory '*'
+if [ -n "$REPO" ]; then
+  cd "$REPO"
+  if [ ! -d .git ]; then
+    git init -q
+    printf 'node_modules\n' >> .git/info/exclude
+    git add -A
+    git commit -qm "Initial import"
+  fi
+fi
+rm -f /wordpress/wp-content/debug.log
+echo "wpsb-provision: done"

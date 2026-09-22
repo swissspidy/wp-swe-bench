@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Run the pinned WordPress Playground CLI against the on-disk /wordpress site, e.g.
+#   wpsb-playground run-blueprint --blueprint=/path/blueprint.json
+set -euo pipefail
+cmd="$1"; shift
+exec node /opt/wpsb/node/node_modules/@wp-playground/cli/wp-playground.js "$cmd" \
+  --mount-dir-before-install /wordpress /wordpress \
+  --wordpress-install-mode=do-not-attempt-installing \
+  --site-url="${WPSB_URL:-http://127.0.0.1:9400}" \
+  --php="${WPSB_PHP_VERSION:-8.3}" \
+  "$@"

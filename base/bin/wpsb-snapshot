@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Snapshot the current site state (SQLite DB + uploads) as the task's pristine starting state.
+set -euo pipefail
+dst=/opt/wpsb/pristine
+rm -rf "$dst"; mkdir -p "$dst"
+sqlite3 /wordpress/wp-content/database/.ht.sqlite ".backup '$dst/.ht.sqlite'"
+tar -C /wordpress/wp-content -cf "$dst/uploads.tar" uploads
+sha256sum "$dst/.ht.sqlite" "$dst/uploads.tar" > "$dst/SHA256SUMS"
+chmod -R a-w "$dst"
+echo "wpsb-snapshot: saved pristine site state to $dst"

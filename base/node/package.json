@@ -1,0 +1,11 @@
+{
+  "name": "wp-swe-bench-tooling",
+  "private": true,
+  "description": "Pinned Node tooling for the wp-swe-bench base image (Playground CLI, @wordpress/scripts, Playwright).",
+  "license": "GPL-2.0-or-later",
+  "dependencies": {
+    "@playwright/test": "1.63.0",
+    "@wp-playground/cli": "3.1.55",
+    "@wordpress/scripts": "35.0.0"
+  }
+}
