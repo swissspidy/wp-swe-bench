@@ -275,7 +275,17 @@ def validate(task_id: str, modes: list[str], keep: bool, harbor: bool, network: 
         result["error"] = str(e)[-4000:]
         log(task_id, f"ERROR {str(e)[:500]}")
     RESULTS.mkdir(parents=True, exist_ok=True)
-    (RESULTS / f"{task_id}.json").write_text(json.dumps(result, indent=2))
+    path = RESULTS / f"{task_id}.json"
+    if path.exists():
+        # Keep results of modes that were not re-run in this invocation.
+        try:
+            prev = json.loads(path.read_text())
+            for m, r in prev.get("modes", {}).items():
+                result["modes"].setdefault(m, r)
+            result["ok"] = "error" not in result and all(r.get("as_expected") for r in result["modes"].values())
+        except Exception:  # noqa: BLE001
+            pass
+    path.write_text(json.dumps(result, indent=2))
     return result
 
 
