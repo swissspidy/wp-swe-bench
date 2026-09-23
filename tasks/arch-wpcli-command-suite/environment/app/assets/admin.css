@@ -1,0 +1,19 @@
+.acme-redirects .column-match_type,
+.acme-redirects .column-status,
+.acme-redirects .column-priority,
+.acme-redirects .column-hits {
+	width: 8em;
+}
+
+.acme-redirects .column-last_hit {
+	width: 12em;
+}
+
+.acme-redirects .column-source code,
+.acme-redirects .column-target code {
+	word-break: break-all;
+}
+
+.acme-redirects-form .description {
+	max-width: 40em;
+}

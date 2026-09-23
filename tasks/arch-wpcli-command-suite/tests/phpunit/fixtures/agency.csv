@@ -1,0 +1,14 @@
+﻿note,source,target,status,match_type,priority,enabled
+Agency A,/agency-a,/new-a/,301,exact,10,yes
+changed,/old-about,/about-new/,302,exact,10,yes
+,old-contact-us,/x/,,,,
+
+,/agency-gone,,410,exact,,
+,/agency-bad,/x/,999,exact,,
+dup,/agency-a,/new-a-2/,301,exact,10,yes
+,^/(bad,/x/,301,regex,,
+"note, with ""quotes""",/agency-c,https://example.org/c,307,prefix,5,no
+,/old-contact,/contact-us/,301,exact,,
+,/agency-d,https://evil.example/x,301,exact,,
+,^/agency/(\d+)$,/a/$1,301,regex,20,yes
+,/agency-e,/e/,,,,
