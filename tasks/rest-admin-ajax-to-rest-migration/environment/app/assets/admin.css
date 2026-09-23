@@ -1,0 +1,6 @@
+#acme-inventory .acme-inv-toolbar,
+#acme-inventory .acme-inv-bulk { display: flex; gap: .75em; align-items: center; margin: 1em 0; }
+#acme-inventory #acme-inv-search { min-width: 18em; }
+#acme-inv-table .column-stock { width: 7em; }
+#acme-inv-table tr.is-low-stock .column-stock button { color: #b32d2e; font-weight: 600; }
+#acme-inventory .acme-inv-pager { display: flex; gap: .75em; align-items: center; margin: 1em 0; }

@@ -1,0 +1,16 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Shop warehouse with Acme Inventory 3.2.1",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Shop",
+				"acme_inventory_alert_email": "warehouse@example.org"
+			}
+		}
+	]
+}
