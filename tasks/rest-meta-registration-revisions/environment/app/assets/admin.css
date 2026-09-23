@@ -1,0 +1,16 @@
+.acme-specs-box__dimensions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.acme-specs-box__dimensions legend {
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+.acme-specs-box__certs select,
+.acme-specs-box__certs input {
+	width: 100%;
+}

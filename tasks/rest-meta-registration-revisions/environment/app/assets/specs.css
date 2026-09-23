@@ -1,0 +1,29 @@
+.acme-specs {
+	border-collapse: collapse;
+	margin: 2em 0;
+	width: 100%;
+}
+
+.acme-specs caption {
+	font-weight: 700;
+	text-align: left;
+}
+
+.acme-specs th,
+.acme-specs td {
+	border-bottom: 1px solid #ddd;
+	padding: 0.5em;
+	text-align: left;
+	vertical-align: top;
+}
+
+.acme-specs__certs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.acme-specs__cert-dates {
+	color: #666;
+	font-size: 0.875em;
+}
