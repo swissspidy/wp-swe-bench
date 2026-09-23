@@ -167,6 +167,29 @@ abstract class TestCase extends PHPUnitTestCase {
 		return rest_do_request( $request );
 	}
 
+	/**
+	 * Like rest(), but also runs the `rest_post_dispatch` filter (as the real server does), so
+	 * headers added there and `_fields` filtering are applied. Returns the filtered response.
+	 */
+	protected function rest_dispatch( string $method, string $route, array $query = array(), $body = null, array $headers = array() ): \WP_REST_Response {
+		$request = new \WP_REST_Request( strtoupper( $method ), $route );
+		foreach ( $headers as $k => $v ) {
+			$request->set_header( $k, $v );
+		}
+		if ( $query ) {
+			$request->set_query_params( $query );
+		}
+		if ( is_array( $body ) ) {
+			$request->set_header( 'Content-Type', 'application/json' );
+			$request->set_body( wp_json_encode( $body ) );
+		} elseif ( is_string( $body ) ) {
+			$request->set_body( $body );
+		}
+		$server   = rest_get_server();
+		$response = rest_ensure_response( $server->dispatch( $request ) );
+		return rest_ensure_response( apply_filters( 'rest_post_dispatch', $response, $server, $request ) );
+	}
+
 	/** Response data after REST embedding/linking like the real server (_embed etc.). */
 	protected function rest_data( \WP_REST_Response $response, bool $embed = false ) {
 		return rest_get_server()->response_to_data( $response, $embed );

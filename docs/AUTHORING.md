@@ -306,8 +306,10 @@ with the task's plugins active. Test files are `*Test.php`; optional
   nonce; `$this->http( 'POST', '/wp-admin/admin-ajax.php', [ 'login' => $login, 'body' => [...] ] )`
   returns `status`, `headers`, `body`, `json`. `nonce_for( $user_id, $action, $login['logged_in'] )`
   mints nonces exactly as that logged-in user would see them.
-- `rest_do_request()` does **not** run the `rest_post_dispatch` filter, so response headers added
-  there are only visible over HTTP. `http()` doesn't follow redirects unless `'follow' => true`.
+- `rest()` (`rest_do_request()`) does **not** run the `rest_post_dispatch` filter; use
+  `rest_dispatch()` when headers added there or `_fields` filtering matter.
+- An in-process REST **autosave** defines `DOING_AUTOSAVE` for the rest of the PHPUnit process
+  (later revisions silently stop being saved); do autosaves over HTTP. `http()` doesn't follow redirects unless `'follow' => true`.
 - `get_posts()` by `name` can't find drafts without a logged-in user; query `$wpdb` in helpers.
 - `count_queries( fn )` → `count`, `queries`, `result` (performance tasks).
 - `mails()` / `clear_mails()` read captured outgoing mail.
