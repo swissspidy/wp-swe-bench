@@ -1,0 +1,20 @@
+.acme-docs-breadcrumbs {
+	font-size: 0.9em;
+	margin-bottom: 1.5em;
+}
+
+.acme-docs-breadcrumbs .acme-docs-version {
+	padding: 0 0.4em;
+	border-radius: 3px;
+	background: rgba(0, 0, 0, 0.08);
+}
+
+.acme-docs-children {
+	margin-top: 2em;
+	padding-top: 1em;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.acme-doc-link--missing {
+	text-decoration: line-through;
+}
