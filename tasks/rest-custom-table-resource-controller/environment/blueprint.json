@@ -1,0 +1,20 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme sales site with Acme Leads 1.8.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-leads/acme-leads.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Software",
+				"acme_leads_inbox": "sales@acme.example"
+			}
+		}
+	]
+}

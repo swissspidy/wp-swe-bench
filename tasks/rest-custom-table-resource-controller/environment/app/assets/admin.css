@@ -1,0 +1,12 @@
+.acme-leads .subsubsub {
+	margin-bottom: 8px;
+}
+
+.acme-leads__pages {
+	margin-top: 12px;
+}
+
+.acme-leads-pipeline li {
+	display: inline-block;
+	margin-right: 16px;
+}
