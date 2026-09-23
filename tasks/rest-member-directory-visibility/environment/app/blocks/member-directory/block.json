@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/member-directory",
+	"version": "2.1.0",
+	"title": "Member directory",
+	"category": "widgets",
+	"icon": "groups",
+	"description": "Lists the community's members (respecting everyone's visibility settings).",
+	"textdomain": "acme-members",
+	"attributes": {
+		"city": { "type": "string", "default": "" },
+		"perPage": { "type": "number", "default": 12 }
+	},
+	"supports": { "html": false, "align": [ "wide", "full" ] },
+	"editorScript": "acme-member-directory-editor"
+}

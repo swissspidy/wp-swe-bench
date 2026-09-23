@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/rest-member-directory-visibility"
+description = "Acme Members 2.2: a directory REST API (list/search/city filter/single/me + validated self-update) and making per-profile/per-field visibility (incl. 1.x settings) hold on every surface: core /wp/v2/users field, core search handler, author archive cards, RSS (public only), member + core users sitemaps, a cached directory block/shortcode; plus a nonce-protected, accessible front-end profile form."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "rest-api", "privacy", "access-control", "visibility", "sitemaps", "feeds", "search", "caching", "forms", "validation"]
+
+[metadata]
+category = "rest-api"
+tags = ["rest-controller", "register-rest-field", "rest-search-handler", "wp-sitemaps", "rss", "transient-cache-leak", "capabilities", "nonces", "validation", "accessibility", "legacy-data", "information-disclosure"]
+difficulty = "very-hard"
+estimated_human_hours = 7
+source = "original"
+repo = "acme-members (custom plugin, ~1250 LOC: field registry with 1.x fallback, visibility rules, profile pages, cached directory shortcode/block, core REST field + search handler, feed and sitemap integrations) + classic theme acme-community"
+starting_state = "Acme Members 2.1.0; 22 members with 2.x and 1.x profiles covering public/members/private profiles and per-field overrides (incl. 1.x hide-profile/hide-phone flags and a stale 1.x flag overridden by 2.x), members who are authors, non-member editor/subscriber, directory page (shortcode), Berlin page (block), edit-profile page"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480

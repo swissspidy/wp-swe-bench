@@ -1,0 +1,24 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Makers community site with Acme Members 2.1.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activateTheme",
+			"themeFolderName": "acme-community"
+		},
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-members/acme-members.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Makers",
+				"blogdescription": "Community of makers"
+			}
+		}
+	]
+}

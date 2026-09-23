@@ -1,0 +1,8 @@
+.acme-member-directory__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1rem; }
+.acme-member-card { border: 1px solid #ddd; border-radius: 6px; padding: 1rem; display: flex; flex-direction: column; gap: .25rem; }
+.acme-member-card__name { font-weight: 600; }
+.acme-member-card__field { color: #555; font-size: .9em; }
+.acme-member-directory__pagination { margin-top: 1rem; display: flex; gap: .5rem; }
+.acme-member-profile__fields { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1rem; }
+.acme-member-profile__fields > div { display: contents; }
+.acme-author-card { border-left: 4px solid #3858e9; padding: .5rem 1rem; margin: 1rem 0; }

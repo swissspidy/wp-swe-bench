@@ -1,0 +1,9 @@
+/*
+Theme Name: Acme Community
+Description: Classic theme of the Acme Makers community site.
+Version: 1.4.0
+Author: Acme Web Team
+License: GPL-2.0-or-later
+Text Domain: acme-community
+*/
+body { font-family: system-ui, sans-serif; max-width: 60rem; margin: 0 auto; padding: 1rem; }
