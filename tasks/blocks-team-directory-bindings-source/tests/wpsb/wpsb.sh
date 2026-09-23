@@ -145,9 +145,9 @@ wpsb_wpcs() {
     local root; root=$(git -C "$repo" rev-list --max-parents=0 HEAD 2>/dev/null | tail -1)
     while IFS= read -r f; do
       [ -n "$f" ] && [ -f "$repo/$f" ] && files+=("$repo/$f")
-    done < <( { git -C "$repo" diff --name-only "$root" -- '*.php'; git -C "$repo" ls-files --others --exclude-standard -- '*.php'; } | sort -u | grep -v -E '(^|/)(vendor|node_modules|build)/|\.asset\.php$' )
+    done < <( { git -C "$repo" diff --name-only "$root" -- '*.php'; git -C "$repo" ls-files --others --exclude-standard -- '*.php'; } | sort -u | grep -v -E '^(vendor|node_modules|build)/' )
   else
-    while IFS= read -r f; do files+=("$f"); done < <(find "$repo" -name '*.php' -not -path '*/vendor/*' -not -path '*/node_modules/*' -not -path '*/build/*' -not -name '*.asset.php')
+    while IFS= read -r f; do files+=("$f"); done < <(find "$repo" -name '*.php' -not -path '*/vendor/*' -not -path '*/node_modules/*' -not -path '*/build/*')
   fi
   if [ "${#files[@]}" -eq 0 ]; then _wpsb_record "$name" 0 1 1; return 0; fi
   local json="$WPSB_LOGS/$name.phpcs.json"
