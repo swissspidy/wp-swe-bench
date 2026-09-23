@@ -1,0 +1,54 @@
+{
+    "1": {
+        "per_page": 25,
+        "hidden_columns": [
+            "ip"
+        ],
+        "last_seen": 1730000000
+    },
+    "2": {
+        "per_page": 20,
+        "hidden_columns": [
+            "object"
+        ],
+        "last_seen": 1712345678
+    },
+    "3": {
+        "per_page": 20,
+        "hidden_columns": [],
+        "last_seen": 0
+    },
+    "4": {
+        "per_page": 50,
+        "hidden_columns": [],
+        "last_seen": 1725000000
+    },
+    "5": {
+        "per_page": 20,
+        "hidden_columns": [],
+        "last_seen": 0
+    },
+    "6": {
+        "per_page": 100,
+        "hidden_columns": [
+            "object",
+            "ip"
+        ],
+        "last_seen": 1720000000
+    },
+    "7": {
+        "per_page": 50,
+        "hidden_columns": [],
+        "last_seen": 0
+    },
+    "888": {
+        "per_page": 25,
+        "hidden_columns": [],
+        "last_seen": 1680000000
+    },
+    "999": {
+        "per_page": 100,
+        "hidden_columns": [],
+        "last_seen": 1700000000
+    }
+}

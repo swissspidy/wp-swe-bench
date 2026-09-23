@@ -1,0 +1,8 @@
+.acme-activity .column-time { width: 12em; }
+.acme-activity .column-user { width: 12em; }
+.acme-activity .column-action { width: 11em; }
+.acme-activity .column-object { width: 9em; }
+.acme-activity .column-ip { width: 9em; }
+.acme-activity tr.is-new td { font-weight: 600; }
+.acme-activity tr.action-post_trashed .acme-activity-action { color: #b32d2e; }
+.acme-activity tr.action-user_login .acme-activity-action { color: #2271b1; }
