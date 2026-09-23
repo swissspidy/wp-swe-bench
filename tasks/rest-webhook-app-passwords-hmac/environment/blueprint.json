@@ -1,0 +1,27 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme fulfilment site with Acme Orders Sync 1.3.2",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-orders-sync/acme-orders-sync.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Fulfilment",
+				"acme_orders_webhook_secret": "acme-legacy-4f9c2e71b8",
+				"acme_orders_sync_settings": {
+					"sources": {
+						"shop-eu": { "label": "EU storefront", "secret": "whsec_eu_7Hq2LxP9vR4mT8kZ" },
+						"shop-us": { "label": "US storefront", "secret": "whsec_us_Qm3Nd8Wz5Yc1Bf6J" }
+					},
+					"log_level": "info"
+				}
+			}
+		}
+	]
+}
