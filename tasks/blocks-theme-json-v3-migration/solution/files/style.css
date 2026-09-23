@@ -1,0 +1,14 @@
+/*
+Theme Name: Acme Magazine
+Theme URI: https://magazine.acme.example/
+Author: Acme Media design team
+Description: Block theme for the Acme Magazine.
+Version: 2.0.0
+Requires at least: 6.5
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+Text Domain: acme-magazine
+*/
+
+/* All styles live in theme.json and styles/*.json. */

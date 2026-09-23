@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"title": "Inverted",
+	"slug": "inverted",
+	"blockTypes": [ "core/group" ],
+	"styles": {
+		"color": {
+			"background": "var:preset|color|night",
+			"text": "var:preset|color|cream"
+		},
+		"spacing": {
+			"padding": {
+				"top": "var:preset|spacing|50",
+				"right": "var:preset|spacing|40",
+				"bottom": "var:preset|spacing|50",
+				"left": "var:preset|spacing|40"
+			}
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var:preset|color|amber" }
+			},
+			"heading": {
+				"color": { "text": "var:preset|color|white" }
+			}
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"title": "Card",
+	"slug": "card",
+	"blockTypes": [ "core/group" ],
+	"styles": {
+		"color": {
+			"background": "var:preset|color|white"
+		},
+		"border": {
+			"color": "var:preset|color|line",
+			"style": "solid",
+			"width": "1px",
+			"radius": "12px"
+		},
+		"shadow": "var:preset|shadow|soft",
+		"spacing": {
+			"padding": {
+				"top": "var:preset|spacing|40",
+				"right": "var:preset|spacing|40",
+				"bottom": "var:preset|spacing|40",
+				"left": "var:preset|spacing|40"
+			}
+		}
+	}
+}

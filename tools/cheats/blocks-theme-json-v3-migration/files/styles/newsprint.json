@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
+	"version": 3,
+	"title": "Newsprint",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"slug": "paper",
+					"color": "#f4f1ea",
+					"name": "Paper"
+				},
+				{
+					"slug": "ink",
+					"color": "#111111",
+					"name": "Ink"
+				},
+				{
+					"slug": "accent",
+					"color": "#111111",
+					"name": "Accent"
+				},
+				{
+					"slug": "muted",
+					"color": "#555555",
+					"name": "Muted"
+				},
+				{
+					"slug": "highlight",
+					"color": "#dddddd",
+					"name": "Highlight"
+				},
+				{
+					"slug": "white",
+					"color": "#ffffff",
+					"name": "White"
+				}
+			]
+		},
+		"typography": {
+			"fontSizes": [
+				{
+					"slug": "small",
+					"size": "0.8125rem",
+					"name": "Small"
+				},
+				{
+					"slug": "medium",
+					"size": "1rem",
+					"name": "Medium"
+				},
+				{
+					"slug": "large",
+					"size": "1.5rem",
+					"name": "Large"
+				},
+				{
+					"slug": "x-large",
+					"size": "2.25rem",
+					"name": "Extra large"
+				},
+				{
+					"slug": "huge",
+					"size": "3rem",
+					"name": "Huge"
+				}
+			]
+		}
+	},
+	"styles": {
+		"typography": {
+			"fontFamily": "var:preset|font-family|serif"
+		}
+	}
+}

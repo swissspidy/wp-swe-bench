@@ -1,0 +1,19 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Magazine 1.8.0 (theme.json v2)",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activateTheme",
+			"themeFolderName": "acme-magazine"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Magazine"
+			}
+		}
+	]
+}
