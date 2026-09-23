@@ -1,0 +1,8 @@
+.acme-stats__totals { display: flex; gap: 1rem; flex-wrap: wrap; margin: 0 0 1em; }
+.acme-stats__total { font-size: 1.1em; font-weight: 600; margin: 0; }
+.acme-stats__table { width: 100%; border-collapse: collapse; margin: 0 0 1.25em; }
+.acme-stats__table caption { text-align: left; font-weight: 600; padding: 0.25em 0; }
+.acme-stats__table th { text-align: left; font-weight: normal; }
+.acme-stats__table td { text-align: right; }
+.acme-stats__table tr + tr th, .acme-stats__table tr + tr td { border-top: 1px solid #f0f0f1; }
+.acme-stats__generated { color: #646970; font-size: 0.9em; }

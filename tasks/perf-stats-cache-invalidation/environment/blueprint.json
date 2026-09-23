@@ -1,0 +1,24 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Newsroom with Acme Dashboard Stats 1.5.2",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-dashboard-stats/acme-dashboard-stats.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Newsroom",
+				"timezone_string": "Europe/Berlin",
+				"acme_stats_settings": {
+					"top_posts": 5,
+					"public_totals": true
+				}
+			}
+		}
+	]
+}

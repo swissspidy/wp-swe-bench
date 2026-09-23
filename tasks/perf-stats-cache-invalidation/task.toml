@@ -1,0 +1,37 @@
+schema_version = "1.3"
+multi_step_reward_strategy = "mean"
+
+[task]
+name = "wp-swe-bench/perf-stats-cache-invalidation"
+description = "Acme Dashboard Stats: cache expensive per-scope aggregations with exact invalidation and no leaks between users (step 1), then add stale-while-revalidate stampede protection, WP-CLI warm/flush and support for a persistent object cache (step 2)."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "performance", "caching", "cache-invalidation", "transients", "object-cache", "stampede", "wp-cli", "rest-api"]
+
+[metadata]
+category = "performance"
+tags = ["caching", "cache-invalidation", "per-user-cache", "stale-while-revalidate", "locking", "persistent-object-cache", "wp-cli", "query-budget", "multi-step"]
+difficulty = "very-hard"
+estimated_human_hours = 8
+source = "original"
+repo = "acme-dashboard-stats (custom plugin, ~1000 LOC: calculator, scopes, dashboard widget, admin page, shortcodes, REST endpoint, WP-CLI)"
+starting_state = "Acme Dashboard Stats 1.5.2; Europe/Berlin site; 320 published posts by 7 writers (incl. month-boundary dates), drafts/pending/scheduled/private/trashed posts, pages, 1,000 comments (approved/pending/spam/trash, pingbacks), editor/author/contributor/subscriber users, About and My numbers pages with the shortcodes"
+multi_step = true
+
+[verifier]
+timeout_sec = 2400.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
+
+[[steps]]
+name = "step-1"
+min_reward = 1.0
+
+[[steps]]
+name = "step-2"
