@@ -67,6 +67,15 @@ def lint(task_dir: Path) -> tuple[list[str], list[str]]:
         if key not in cfg.get(sec, {}):
             errors.append(f"[{sec}].{key} missing")
 
+    ver = cfg.get("verifier", {})
+    if ver.get("environment_mode") != "separate":
+        errors.append('[verifier].environment_mode must be "separate" (grade in a fresh copy of the task image)')
+    df_txt = (task_dir / "environment" / "Dockerfile").read_text() if (task_dir / "environment" / "Dockerfile").exists() else ""
+    m = re.search(r"^ENV WPSB_REPO=(\S+)", df_txt, re.M)
+    arts = [a if isinstance(a, str) else a.get("source") for a in cfg.get("artifacts", [])]
+    if m and m.group(1) not in arts:
+        errors.append(f"top-level artifacts must include the agent repository {m.group(1)} (transferred to the separate verifier)")
+
     steps = [s.get("name") for s in cfg.get("steps", [])]
     if bool(steps) != bool(md.get("multi_step")):
         errors.append("[metadata].multi_step must be true iff [[steps]] are declared")
