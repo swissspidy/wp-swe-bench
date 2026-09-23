@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/breaking-banner",
+	"version": "3.2.0",
+	"title": "Breaking news banner",
+	"category": "text",
+	"icon": "warning",
+	"description": "A \"Breaking:\" or \"Update:\" banner on top of a story.",
+	"textdomain": "acme-newsroom",
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"level": {
+			"type": "string",
+			"enum": [ "breaking", "update" ],
+			"default": "breaking"
+		}
+	},
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		}
+	},
+	"editorScript": "file:./index.js"
+}

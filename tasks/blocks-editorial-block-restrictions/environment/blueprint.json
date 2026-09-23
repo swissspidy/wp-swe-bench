@@ -1,0 +1,26 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme newsroom with Acme Newsroom 3.2.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-newsroom/acme-newsroom.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Newsroom",
+				"acme_newsroom_settings": {
+					"city": "Zurich",
+					"boilerplate": "Acme Corp builds dependable widgets for 40 million customers in 30 countries.",
+					"contact_name": "Mira Press",
+					"contact_email": "press@acme.example",
+					"contact_phone": "+41 44 000 00 00"
+				}
+			}
+		}
+	]
+}

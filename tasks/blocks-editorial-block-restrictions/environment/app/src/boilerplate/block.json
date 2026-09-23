@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/boilerplate",
+	"version": "3.2.0",
+	"title": "Company boilerplate",
+	"category": "text",
+	"icon": "building",
+	"description": "The \"About Acme\" paragraph from the newsroom settings.",
+	"textdomain": "acme-newsroom",
+	"supports": {
+		"html": false,
+		"multiple": false
+	},
+	"editorScript": "file:./index.js"
+}

@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/dateline",
+	"version": "3.2.0",
+	"title": "Dateline",
+	"category": "text",
+	"icon": "calendar-alt",
+	"description": "City and date at the start of a press release.",
+	"textdomain": "acme-newsroom",
+	"attributes": {
+		"city": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [ "postId" ],
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./index.js"
+}
