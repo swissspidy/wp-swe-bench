@@ -1,0 +1,12 @@
+.acme-importer .acme-importer-upload {
+	margin: 1em 0 2em;
+}
+
+.acme-importer .acme-importer-last-run th {
+	width: 12em;
+}
+
+.acme-importer .acme-importer-errors {
+	list-style: disc;
+	margin-left: 2em;
+}
