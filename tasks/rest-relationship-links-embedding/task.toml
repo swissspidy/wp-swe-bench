@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/rest-relationship-links-embedding"
+description = "Acme Library 2.4: expose the book/author many-to-many relation on the core REST endpoints (writable fields, embeddable CURIE links, book_author filter) without N+1 queries and without leaking unpublished related posts; fix the same leak in the old relation routes."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "rest-api", "register_rest_field", "links", "embedding", "curies", "collection-params", "performance", "security"]
+
+[metadata]
+category = "rest-api"
+tags = ["rest-fields", "rest-links", "embed", "curies", "collection-filter", "n-plus-one", "query-count", "information-disclosure", "legacy-data", "custom-table"]
+difficulty = "very-hard"
+estimated_human_hours = 6
+source = "original"
+repo = "acme-library (custom plugin, ~1100 LOC)"
+starting_state = "Acme Library 2.3.1 active; 108 books / 41 authors with a custom relationship table, some books still in the 1.x meta format, draft/private/pending books and authors attached to published ones, editor/author/contributor/subscriber users"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
