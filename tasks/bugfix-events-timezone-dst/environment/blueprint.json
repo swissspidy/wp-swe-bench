@@ -1,0 +1,27 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme community site with Acme Events Calendar 1.6.2",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-events/acme-events.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Community",
+				"timezone_string": "America/New_York",
+				"date_format": "F j, Y",
+				"time_format": "g:i a",
+				"acme_events_settings": {
+					"upcoming_limit": 5,
+					"feed_enabled": true
+				},
+				"acme_events_db_version": "1.6"
+			}
+		}
+	]
+}

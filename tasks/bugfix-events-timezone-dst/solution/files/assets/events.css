@@ -1,0 +1,35 @@
+.acme-event-details {
+	margin: 1.5em 0;
+	padding: 1em 1.25em;
+	border-left: 4px solid currentColor;
+	background: rgba(0, 0, 0, 0.03);
+}
+
+.acme-event-details p {
+	margin: 0.25em 0;
+}
+
+.acme-event-all-day {
+	font-size: 0.85em;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-left: 0.5em;
+}
+
+.acme-upcoming-events {
+	list-style: none;
+	padding: 0;
+}
+
+.acme-upcoming-event {
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+	padding: 0.5em 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.acme-upcoming-event-date {
+	white-space: nowrap;
+	opacity: 0.8;
+}
