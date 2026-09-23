@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme-courses/enroll-button",
+	"title": "Course Enroll Button",
+	"category": "theme",
+	"icon": "welcome-learn-more",
+	"description": "Link to the course's enrollment page, or a notice when enrollment is closed.",
+	"textdomain": "acme-courses",
+	"usesContext": [ "postId", "postType" ],
+	"supports": {
+		"html": false,
+		"color": {
+			"text": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		}
+	},
+	"editorScript": "acme-courses-course-meta-editor",
+	"render": "file:./render.php"
+}

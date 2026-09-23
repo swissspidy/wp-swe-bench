@@ -1,0 +1,29 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Academy with Acme Courses 1.6.2 on Twenty Twenty-Five",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activateTheme",
+			"themeFolderName": "twentytwentyfive"
+		},
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-courses/acme-courses.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Academy",
+				"acme_courses_settings": {
+					"currency": "USD",
+					"currency_position": "before",
+					"enroll_base_url": "https://academy.example.org/enroll",
+					"show_summary": true
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,29 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--60)">
+	<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+		<!-- wp:post-title {"level":1} /-->
+
+		<!-- wp:post-featured-image {"aspectRatio":"3/2"} /-->
+
+		<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+		<div class="wp-block-group">
+			<!-- wp:acme-courses/course-price /-->
+
+			<!-- wp:acme-courses/course-duration /-->
+
+			<!-- wp:acme-courses/enroll-button /-->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:post-content {"align":"full","layout":{"type":"constrained"}} /-->
+
+		<!-- wp:post-terms {"term":"acme_course_topic","prefix":"Topics: "} /-->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

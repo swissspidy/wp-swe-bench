@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme-courses/course-list",
+	"title": "Course List",
+	"category": "widgets",
+	"icon": "welcome-learn-more",
+	"description": "A list of courses, optionally limited to one topic.",
+	"textdomain": "acme-courses",
+	"attributes": {
+		"topic": {
+			"type": "string",
+			"default": ""
+		},
+		"number": {
+			"type": "integer",
+			"default": 6
+		},
+		"orderby": {
+			"type": "string",
+			"enum": [ "date", "title", "menu_order" ],
+			"default": "date"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
