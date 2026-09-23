@@ -1,0 +1,207 @@
+[
+  {
+    "key": "post-classic-html",
+    "table": "posts",
+    "column": "post_content",
+    "post_name": "classic-shop-page",
+    "post_type": "page",
+    "input": "<p>Visit <a href=\"http://old-shop.test/shop/\">our shop</a> or write to us via http://old-shop.test/contact/.</p>\n<p><img src=\"http://old-shop.test/wp-content/uploads/2024/03/team.jpg\" alt=\"The team\" /></p>"
+  },
+  {
+    "key": "post-classic-html-excerpt",
+    "table": "posts",
+    "column": "post_excerpt",
+    "post_name": "classic-shop-page",
+    "post_type": "page",
+    "input": "Our shop moved to http://old-shop.test/shop/ - come and see."
+  },
+  {
+    "key": "post-blocks",
+    "table": "posts",
+    "column": "post_content",
+    "post_name": "summer-sale",
+    "post_type": "post",
+    "input": "<!-- wp:acme/promo {\"title\":\"Summer \\u003cb\\u003esale\\u003c/b\\u003e \\u0026 more\",\"url\":\"http://old-shop.test/summer/\",\"note\":\"\\u0022Up to 50%\\u0022 \\u002d\\u002d while stocks last\"} /-->\n\n<!-- wp:image {\"id\":41,\"sizeSlug\":\"large\",\"linkDestination\":\"custom\"} -->\n<figure class=\"wp-block-image size-large\"><a href=\"http://old-shop.test/summer/\"><img src=\"http://old-shop.test/wp-content/uploads/2024/06/summer.jpg\" alt=\"Summer sale\" class=\"wp-image-41\"/></a></figure>\n<!-- /wp:image -->\n\n<!-- wp:buttons -->\n<div class=\"wp-block-buttons\"><!-- wp:button {\"className\":\"is-style-fill\"} -->\n<div class=\"wp-block-button is-style-fill\"><a class=\"wp-block-button__link wp-element-button\" href=\"http://old-shop.test/cart/?add=12\\u0026qty=1\">Buy now</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->\n\n<!-- wp:acme/store-map {\"markers\":[{\"label\":\"Z\\u00fcrich\",\"url\":\"http:\\/\\/old-shop.test\\/stores\\/zurich\\/\"},{\"label\":\"Bern\",\"url\":\"http:\\/\\/old-shop.test\\/stores\\/bern\\/\"}],\"regex\":\"^\\\\d{4}$\"} /-->\n\n<!-- wp:paragraph -->\n<p>Share: <a href=\"https://social.example/share?u=http%3A%2F%2Fold-shop.test%2Fsummer%2F\">Social</a> · <code>C:\\Shop\\exports</code></p>\n<!-- /wp:paragraph -->"
+  },
+  {
+    "key": "post-guid",
+    "table": "posts",
+    "column": "guid",
+    "post_name": "summer-sale",
+    "post_type": "post",
+    "guid": true,
+    "input": "http://old-shop.test/?p=4711"
+  },
+  {
+    "key": "template-index",
+    "table": "posts",
+    "column": "post_content",
+    "post_name": "index",
+    "post_type": "wp_template",
+    "input": "<!-- wp:template-part {\"slug\":\"header\",\"tagName\":\"header\"} /-->\n\n<!-- wp:group {\"tagName\":\"main\",\"style\":{\"background\":{\"backgroundImage\":{\"url\":\"http:\\/\\/old-shop.test\\/wp-content\\/uploads\\/2024\\/01\\/bg.png\",\"source\":\"file\"}}}} -->\n<main class=\"wp-block-group\"><!-- wp:navigation {\"overlayMenu\":\"never\"} -->\n<!-- wp:navigation-link {\"label\":\"Shop \\u0026 Sale\",\"url\":\"http:\\/\\/old-shop.test\\/shop\\/\",\"kind\":\"custom\"} /-->\n<!-- wp:navigation-link {\"label\":\"\\u003cem\\u003eJournal\\u003c/em\\u003e\",\"url\":\"http://old-shop.test/journal/\",\"kind\":\"custom\"} /-->\n<!-- /wp:navigation -->\n\n<!-- wp:query {\"queryId\":1,\"query\":{\"perPage\":3,\"postType\":\"post\"}} -->\n<div class=\"wp-block-query\"><!-- wp:post-template -->\n<!-- wp:post-title {\"isLink\":true} /-->\n<!-- /wp:post-template --></div>\n<!-- /wp:query --></main>\n<!-- /wp:group -->\n\n<!-- wp:template-part {\"slug\":\"footer\",\"tagName\":\"footer\"} /-->"
+  },
+  {
+    "key": "post-no-match",
+    "table": "posts",
+    "column": "post_content",
+    "post_name": "about-us",
+    "post_type": "page",
+    "input": "<!-- wp:paragraph -->\n<p>We are on <a href=\"https://old-shop.test.example.org/\">a different host</a> and {\\\"quoted\\\"} \\\\server\\share.</p>\n<!-- /wp:paragraph -->"
+  },
+  {
+    "key": "meta-nested-array",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "summer-sale",
+    "post_type": "post",
+    "meta_key": "_acme_banner",
+    "input": "a:5:{s:5:\"image\";s:58:\"http://old-shop.test/wp-content/uploads/2024/06/banner.jpg\";s:3:\"cta\";a:2:{s:5:\"label\";s:17:\"Shop \"now\" \\ save\";s:5:\"links\";a:3:{i:0;s:28:\"http://old-shop.test/summer/\";i:1;s:55:\"https://partner.example/?ref=http%3A%2F%2Fold-shop.test\";i:2;s:18:\"C:\\Shop\\banner.psd\";}}s:7:\"visible\";b:1;s:6:\"weight\";d:1.5;i:7;N;}"
+  },
+  {
+    "key": "meta-double-serialized",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "summer-sale",
+    "post_type": "post",
+    "meta_key": "_acme_builder_data",
+    "input": "a:2:{s:7:\"version\";i:3;s:6:\"layout\";s:235:\"a:1:{s:4:\"rows\";a:2:{i:0;a:2:{s:4:\"type\";s:5:\"image\";s:3:\"src\";s:55:\"http://old-shop.test/wp-content/uploads/2024/06/row.jpg\";}i:1;a:2:{s:4:\"type\";s:4:\"html\";s:4:\"html\";s:55:\"<a href=\"http://old-shop.test/faq/\">FAQ</a> — Zürich\";}}}\";}"
+  },
+  {
+    "key": "meta-stdclass",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "summer-sale",
+    "post_type": "post",
+    "meta_key": "_acme_seo",
+    "input": "O:8:\"stdClass\":3:{s:9:\"canonical\";s:33:\"http://old-shop.test/summer-sale/\";s:2:\"og\";O:8:\"stdClass\":2:{s:5:\"image\";s:54:\"http://old-shop.test/wp-content/uploads/2024/06/og.jpg\";s:5:\"title\";s:25:\"Summer sale – up to 50%\";}s:7:\"noindex\";b:0;}"
+  },
+  {
+    "key": "meta-unknown-class",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "home",
+    "post_type": "page",
+    "meta_key": "_old_slider_slides",
+    "input": "a:2:{i:0;O:21:\"Acme_Old_Slider_Slide\":4:{s:5:\"title\";s:6:\"Spring\";s:5:\"image\";s:64:\"http://old-shop.test/wp-content/uploads/2023/11/slide-spring.jpg\";s:4:\"link\";a:2:{s:4:\"href\";s:26:\"http://old-shop.test/sale/\";s:6:\"target\";s:6:\"_blank\";}s:8:\"settings\";a:3:{s:8:\"autoplay\";b:1;s:5:\"delay\";d:4.5;s:5:\"order\";i:-1;}}i:1;O:21:\"Acme_Old_Slider_Slide\":4:{s:5:\"title\";s:6:\"Summer\";s:5:\"image\";s:64:\"http://old-shop.test/wp-content/uploads/2023/11/slide-summer.jpg\";s:4:\"link\";a:2:{s:4:\"href\";s:26:\"http://old-shop.test/sale/\";s:6:\"target\";s:6:\"_blank\";}s:8:\"settings\";a:3:{s:8:\"autoplay\";b:1;s:5:\"delay\";d:4.5;s:5:\"order\";i:-1;}}}"
+  },
+  {
+    "key": "meta-cache-object",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "home",
+    "post_type": "page",
+    "meta_key": "_acme_legacy_cache",
+    "input": "O:22:\"Acme_Legacy_Cache_Item\":3:{s:3:\"key\";s:9:\"home-hero\";s:7:\"payload\";a:2:{s:4:\"html\";s:60:\"<img src=\"http://old-shop.test/wp-content/uploads/hero.jpg\">\";s:4:\"json\";s:42:\"{\"src\":\"http:\\/\\/old-shop.test\\/hero.jpg\"}\";}s:7:\"expires\";i:1735689600;}"
+  },
+  {
+    "key": "meta-json",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "home",
+    "post_type": "page",
+    "meta_key": "_acme_hero_json",
+    "input": "{\"src\":\"http:\\/\\/old-shop.test\\/wp-content\\/uploads\\/2024\\/02\\/hero.webp\",\"alt\":\"Caf\\u00e9 \\\"Acme\\\"\",\"links\":[\"http:\\/\\/old-shop.test\\/menu\\/\",\"http:\\/\\/old-shop.test\\/booking\\/\"]}"
+  },
+  {
+    "key": "meta-json-in-serialized",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "home",
+    "post_type": "page",
+    "meta_key": "_acme_widgets_config",
+    "input": "a:2:{s:3:\"map\";s:63:\"{\"center\":[47.37,8.54],\"pin\":\"http:\\/\\/old-shop.test\\/pin.svg\"}\";s:5:\"share\";s:71:\"https://social.example/share?u=http%3A%2F%2Fold-shop.test%2F&title=Acme\";}"
+  },
+  {
+    "key": "meta-no-match",
+    "table": "postmeta",
+    "column": "meta_value",
+    "post_name": "home",
+    "post_type": "page",
+    "meta_key": "_acme_untouched",
+    "input": "a:5:{s:4:\"path\";s:16:\"C:\\data\\\"quoted\"\";s:1:\"n\";i:-3;s:1:\"f\";d:0.25;s:2:\"ok\";b:0;s:4:\"host\";s:13:\"old-shop.test\";}"
+  },
+  {
+    "key": "option-widget-text",
+    "table": "options",
+    "column": "option_value",
+    "option_name": "widget_text",
+    "autoload": "on",
+    "input": "a:3:{i:2;a:4:{s:5:\"title\";s:13:\"Opening hours\";s:4:\"text\";s:56:\"See <a href=\"http://old-shop.test/hours/\">our hours</a>.\";s:6:\"filter\";b:1;s:6:\"visual\";b:1;}i:3;a:3:{s:5:\"title\";s:10:\"Newsletter\";s:4:\"text\";s:56:\"<form action=\"http://old-shop.test/subscribe/\">\\n</form>\";s:6:\"filter\";b:0;}s:12:\"_multiwidget\";i:1;}"
+  },
+  {
+    "key": "option-cache-object",
+    "table": "options",
+    "column": "option_value",
+    "option_name": "acme_legacy_menu_cache",
+    "autoload": "off",
+    "input": "a:2:{s:5:\"items\";a:1:{i:0;O:22:\"Acme_Legacy_Cache_Item\":3:{s:3:\"key\";s:9:\"main-menu\";s:7:\"payload\";a:2:{i:0;s:26:\"http://old-shop.test/shop/\";i:1;s:29:\"http://old-shop.test/journal/\";}s:7:\"expires\";i:1735689600;}}s:5:\"built\";s:10:\"2024-12-01\";}"
+  },
+  {
+    "key": "option-json",
+    "table": "options",
+    "column": "option_value",
+    "option_name": "acme_shop_endpoints",
+    "autoload": "on",
+    "input": "{\"api\":\"http:\\/\\/old-shop.test\\/wp-json\\/acme\\/v1\\/\",\"webhook\":\"http:\\/\\/old-shop.test\\/?acme-hook=1\",\"legacy\":\"http://old-shop.test/api.php\"}"
+  },
+  {
+    "key": "term-description",
+    "table": "term_taxonomy",
+    "column": "description",
+    "term_slug": "news",
+    "taxonomy": "category",
+    "input": "Company news. Archive: <a href=\"http://old-shop.test/category/news/\">http://old-shop.test/category/news/</a>"
+  },
+  {
+    "key": "termmeta-image",
+    "table": "termmeta",
+    "column": "meta_value",
+    "term_slug": "news",
+    "taxonomy": "category",
+    "meta_key": "acme_term_image",
+    "input": "a:2:{s:3:\"url\";s:48:\"http://old-shop.test/wp-content/uploads/news.png\";s:5:\"width\";i:1200;}"
+  },
+  {
+    "key": "user-url",
+    "table": "users",
+    "column": "user_url",
+    "user_login": "shopkeeper",
+    "input": "http://old-shop.test/team/anna/"
+  },
+  {
+    "key": "usermeta-description",
+    "table": "usermeta",
+    "column": "meta_value",
+    "user_login": "shopkeeper",
+    "meta_key": "description",
+    "input": "Anna runs the shop. Portfolio: http://old-shop.test/team/anna/ \"since 2012\""
+  },
+  {
+    "key": "comment-author-url",
+    "table": "comments",
+    "column": "comment_author_url",
+    "comment_author": "Ben",
+    "input": "http://old-shop.test/customers/ben/"
+  },
+  {
+    "key": "comment-content",
+    "table": "comments",
+    "column": "comment_content",
+    "comment_author": "Ben",
+    "input": "Great sale! Link for friends: http://old-shop.test/summer/?utm_source=comment"
+  },
+  {
+    "key": "redirect-plain",
+    "table": "acme_redirects",
+    "column": "target",
+    "source": "/old-summer/",
+    "input": "http://old-shop.test/summer/"
+  },
+  {
+    "key": "redirect-encoded",
+    "table": "acme_redirects",
+    "column": "target",
+    "source": "/go/partner/",
+    "input": "https://partner.example/track?to=http%3A%2F%2Fold-shop.test%2Fshop%2F"
+  }
+]

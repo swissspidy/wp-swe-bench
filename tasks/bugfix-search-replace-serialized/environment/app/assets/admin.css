@@ -1,0 +1,16 @@
+.acme-migrate .acme-migrate-report {
+	max-width: 720px;
+	margin: 0.5em 0 1em;
+}
+
+.acme-migrate .acme-migrate-summary {
+	font-weight: 600;
+}
+
+.acme-migrate .acme-migrate-warning {
+	color: #996800;
+}
+
+.acme-migrate #acme-migrate-tables {
+	min-width: 20em;
+}
