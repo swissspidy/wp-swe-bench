@@ -1,0 +1,16 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme local network (Acme Directory 2.4.1)",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Local",
+				"blogdescription": "Local businesses across the Acme region"
+			}
+		}
+	]
+}

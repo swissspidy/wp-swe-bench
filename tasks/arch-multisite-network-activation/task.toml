@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/arch-multisite-network-activation"
+description = "Acme Directory 2.5: network activation that sets up every site of a multisite network (batched through the main site's cron on large networks, first-request set-up), new/deleted sites, network deactivation vs uninstall across all sites, per-site activation still working."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "multisite", "network-activation", "custom-tables", "wp-cron", "uninstall", "plugin-lifecycle", "wp-cli"]
+
+[metadata]
+category = "plugin-architecture"
+tags = ["multisite", "network-activation", "switch-to-blog", "batching", "wp-cron", "site-lifecycle-hooks", "uninstall", "deactivation", "custom-tables", "legacy-data"]
+difficulty = "hard"
+estimated_human_hours = 5
+source = "original"
+repo = "acme-directory (custom plugin, ~1250 LOC: custom listings/categories tables, REST API, shortcodes, moderation admin, daily cleanup cron, WP-CLI)"
+starting_state = "Subdirectory multisite network (6 sites, one archived) on SQLite; Acme Directory 2.4.1 activated individually on / and /south/ with listings, custom settings and pages; network mu-plugin hooking acme_directory_installed / acme_directory_default_settings"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
