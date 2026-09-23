@@ -1,0 +1,73 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/media-card",
+	"version": "1.2.0",
+	"title": "Media card",
+	"category": "design",
+	"icon": "id-alt",
+	"description": "An image with a heading, some text and a call to action.",
+	"keywords": [ "card", "teaser", "image" ],
+	"textdomain": "acme-media-card",
+	"attributes": {
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src"
+		},
+		"mediaAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"mediaLink": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".wp-block-acme-media-card__media a",
+			"attribute": "href"
+		},
+		"heading": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-acme-media-card__heading"
+		},
+		"text": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-acme-media-card__text"
+		},
+		"ctaText": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-acme-media-card__cta"
+		},
+		"ctaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".wp-block-acme-media-card__cta",
+			"attribute": "href"
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		},
+		"spacing": {
+			"padding": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

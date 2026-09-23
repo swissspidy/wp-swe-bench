@@ -1,0 +1,15 @@
+{
+  "name": "acme-media-card",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Media card block for the Acme marketing sites.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}
