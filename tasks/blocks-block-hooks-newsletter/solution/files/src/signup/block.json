@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/newsletter-signup",
+	"version": "2.4.0",
+	"title": "Newsletter signup",
+	"category": "widgets",
+	"icon": "email",
+	"description": "Newsletter signup form. Subscribers are stored under Users → Subscribers.",
+	"keywords": [ "newsletter", "subscribe", "email" ],
+	"textdomain": "acme-newsletter",
+	"attributes": {
+		"heading": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonLabel": {
+			"type": "string",
+			"default": ""
+		},
+		"showName": {
+			"type": "boolean",
+			"default": true
+		},
+		"placement": {
+			"type": "string",
+			"enum": [ "", "after_content", "footer" ],
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

@@ -1,0 +1,32 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme blog with Acme Newsletter 2.3.1 on Twenty Twenty-Five",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-newsletter/acme-newsletter.php"
+		},
+		{
+			"step": "activateTheme",
+			"themeFolderName": "twentytwentyfive"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Blog",
+				"acme_newsletter_settings": {
+					"heading": "Get the Acme newsletter",
+					"description": "Product news and event invitations, once a week.",
+					"button_label": "Subscribe",
+					"consent_text": "I agree to receive the Acme newsletter.",
+					"success_message": "Thanks! Please check your inbox to confirm your subscription.",
+					"show_name": true,
+					"auto_insert": true
+				}
+			}
+		}
+	]
+}

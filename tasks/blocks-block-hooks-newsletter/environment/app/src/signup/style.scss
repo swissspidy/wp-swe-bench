@@ -1,0 +1,28 @@
+.acme-newsletter {
+	padding: 1.5rem;
+	border: 1px solid currentColor;
+	border-radius: 4px;
+
+	&__heading {
+		margin-top: 0;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	&__hp {
+		position: absolute !important;
+		left: -9999px;
+	}
+
+	&__notice--success {
+		font-weight: 600;
+	}
+
+	&__notice--error {
+		color: #b32d2e;
+	}
+}

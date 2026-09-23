@@ -1,0 +1,16 @@
+{
+  "name": "acme-newsletter",
+  "version": "2.3.1",
+  "private": true,
+  "description": "Newsletter signup for the Acme sites.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src",
+    "lint:php": "phpcs --standard=WordPress includes acme-newsletter.php"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}
