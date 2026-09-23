@@ -1,0 +1,20 @@
+.acme-pf-fields .acme-pf-field label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+.acme-pf-fields .acme-pf-field--checkbox label {
+	font-weight: 400;
+}
+
+.column-acme_pf_price,
+.column-acme_pf_sku,
+.column-acme_pf_in_stock,
+.column-acme_pf_featured {
+	width: 9%;
+}
+
+.column-acme_pf_featured .dashicons-star-filled {
+	color: #dba617;
+}

@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/bugfix-metabox-rest-meta-race"
+description = "Acme Product Fields: the block editor's meta box request reverts sidebar (REST meta) changes, unchecked checkboxes never persist, quotes gain backslashes, Quick Edit wipes fields, Bulk Edit ignores 'No Change', and legacy checkbox values read wrong in REST."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "bugfix", "post-meta", "metabox", "block-editor", "rest-api", "quick-edit", "bulk-edit", "slashing"]
+
+[metadata]
+category = "bugfix"
+tags = ["meta-box-compat", "register-post-meta", "save-post", "wp-slash", "checkbox", "quick-edit", "bulk-edit", "legacy-data", "race"]
+difficulty = "hard"
+estimated_human_hours = 4
+source = "original"
+repo = "acme-product-fields (custom plugin, ~1k LOC: CPT, REST-registered meta + block editor sidebar panel, classic meta box, Quick/Bulk Edit, settings, front-end summary)"
+starting_state = "Acme Product Fields 2.3.1; products in the current format and imported from 1.x (yes/no, on/off checkbox values); admin, editor, author (with own draft) and subscriber users"
+multi_step = false
+
+[verifier]
+timeout_sec = 1800.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480

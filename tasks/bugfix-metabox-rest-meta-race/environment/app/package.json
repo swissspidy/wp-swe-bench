@@ -1,0 +1,15 @@
+{
+  "name": "acme-product-fields",
+  "version": "2.3.1",
+  "private": true,
+  "description": "Product details for the Acme shop: price, SKU, badge, stock and internal notes.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build src/sidebar/index.js --output-path=build/sidebar",
+    "start": "wp-scripts start src/sidebar/index.js --output-path=build/sidebar",
+    "lint:js": "wp-scripts lint-js src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}
