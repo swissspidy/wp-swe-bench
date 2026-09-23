@@ -1,0 +1,7 @@
+.acme-re-search { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin-bottom: 2rem; }
+.acme-re-search__features { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: .5rem 1rem; border: 0; padding: 0; }
+.acme-re-results { list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.acme-re-listing { border: 1px solid #ddd; padding: 1rem; border-radius: 4px; }
+.acme-re-listing.is-pending .acme-re-listing__price::after { content: " (pending)"; }
+.acme-re-listing__title { display: block; font-weight: 600; }
+.acme-re-pagination ul { display: flex; gap: .5rem; list-style: none; padding: 0; }
