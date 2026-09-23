@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/bugfix-duplicate-post-meta-slashes"
+description = "Yoast Duplicate Post (maintained fork of 4.7): copies and Rewrite & Republish corrupt backslashes in custom fields and block markup, and lose custom taxonomy terms of late-registered post types."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "bugfix", "duplicate-post", "post-meta", "slashing", "taxonomies", "rewrite-and-republish", "real-plugin"]
+
+[metadata]
+category = "bugfix"
+tags = ["wp-slash", "post-meta", "serialization", "taxonomies", "init-order", "rewrite-and-republish", "pinned-real-plugin", "regression"]
+difficulty = "hard"
+estimated_human_hours = 4
+source = "Yoast Duplicate Post 4.7 (wordpress.org, GPL-2.0-or-later) with an injected regression (original): a slashing/taxonomy-caching refactor across admin-functions.php, src/utils.php, src/post-duplicator.php, src/post-republisher.php and src/duplicate-post.php"
+repo = "duplicate-post 4.7 (real plugin, ~7.5k LOC PHP excluding vendor) + site mu-plugin with custom post types"
+starting_state = "Duplicate Post active, enabled for post/page/acme_recipe/acme_release; posts with JSON/regex/Windows-path meta, serialized arrays and objects, block markup with escaped unicode attributes; release notes CPT registered on init priority 20 with channel/component terms"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480

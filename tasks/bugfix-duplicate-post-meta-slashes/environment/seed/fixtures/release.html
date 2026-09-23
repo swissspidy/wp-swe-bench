@@ -1,0 +1,13 @@
+<!-- wp:paragraph -->
+<p>Release 3.2 fixes path handling on Windows (<code>C:\ProgramData\Acme\config.json</code>) and escaping in exported CSV files.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>CLI: <code>acme export --delimiter="\t"</code> works again.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item {"className":"is-note \u002d\u002d highlight"} -->
+<li>API: JSON responses keep <code>\u00e9</code> escapes.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
