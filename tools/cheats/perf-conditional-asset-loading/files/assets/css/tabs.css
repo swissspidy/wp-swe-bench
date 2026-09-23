@@ -1,0 +1,49 @@
+/**
+ * Acme UI Kit – Tabs.
+ */
+.acme-tabs {
+	margin: 0 0 var(--acme-gap);
+	border: 1px solid var(--acme-border);
+	border-radius: var(--acme-radius);
+	background: var(--acme-surface);
+}
+
+.acme-tabs__list {
+	display: flex;
+	gap: 0.25rem;
+	margin: 0;
+	padding: 0 0.5rem;
+	border-bottom: 1px solid var(--acme-border);
+	overflow-x: auto;
+}
+
+.acme-tabs__tab {
+	appearance: none;
+	margin: 0;
+	padding: 0.75rem 1rem;
+	border: 0;
+	border-bottom: 3px solid transparent;
+	background: none;
+	color: var(--acme-muted);
+	font: inherit;
+	cursor: pointer;
+}
+
+.acme-tabs__tab[aria-selected="true"] {
+	border-bottom-color: var(--acme-accent);
+	color: inherit;
+	font-weight: 600;
+}
+
+.acme-tabs__tab:focus-visible {
+	outline: 2px solid var(--acme-accent);
+	outline-offset: -2px;
+}
+
+.acme-tabs__panel {
+	padding: 1rem;
+}
+
+.acme-tabs__panel[hidden] {
+	display: none;
+}

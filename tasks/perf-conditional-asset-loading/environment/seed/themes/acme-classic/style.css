@@ -1,0 +1,10 @@
+/*
+Theme Name: Acme Classic
+Description: The old Acme Outdoor theme (classic theme with a sidebar), still used by the shop sub-site.
+Version: 1.4.0
+Requires at least: 6.6
+Text Domain: acme-classic
+*/
+body { font-family: system-ui, sans-serif; margin: 0; }
+.site { display: grid; grid-template-columns: 1fr 18rem; gap: 2rem; max-width: 72rem; margin: 0 auto; padding: 1rem; }
+.site-header, .site-footer { grid-column: 1 / -1; }

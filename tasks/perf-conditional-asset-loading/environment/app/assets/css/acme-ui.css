@@ -1,0 +1,186 @@
+/**
+ * Acme UI Kit – design tokens and component styles.
+ */
+
+/* Tokens ---------------------------------------------------------------- */
+:root {
+	--acme-accent: #3858e9;
+	--acme-accent-contrast: #fff;
+	--acme-border: #d0d4dc;
+	--acme-surface: #fff;
+	--acme-muted: #5b616b;
+	--acme-radius: 6px;
+	--acme-gap: 1rem;
+	--acme-speed: 200ms;
+}
+
+.acme-ui-visually-hidden {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	white-space: nowrap;
+}
+
+/* Tabs ------------------------------------------------------------------ */
+.acme-tabs {
+	margin: 0 0 var(--acme-gap);
+	border: 1px solid var(--acme-border);
+	border-radius: var(--acme-radius);
+	background: var(--acme-surface);
+}
+
+.acme-tabs__list {
+	display: flex;
+	gap: 0.25rem;
+	margin: 0;
+	padding: 0 0.5rem;
+	border-bottom: 1px solid var(--acme-border);
+	overflow-x: auto;
+}
+
+.acme-tabs__tab {
+	appearance: none;
+	margin: 0;
+	padding: 0.75rem 1rem;
+	border: 0;
+	border-bottom: 3px solid transparent;
+	background: none;
+	color: var(--acme-muted);
+	font: inherit;
+	cursor: pointer;
+}
+
+.acme-tabs__tab[aria-selected="true"] {
+	border-bottom-color: var(--acme-accent);
+	color: inherit;
+	font-weight: 600;
+}
+
+.acme-tabs__tab:focus-visible {
+	outline: 2px solid var(--acme-accent);
+	outline-offset: -2px;
+}
+
+.acme-tabs__panel {
+	padding: 1rem;
+}
+
+.acme-tabs__panel[hidden] {
+	display: none;
+}
+
+/* Accordion ------------------------------------------------------------- */
+.acme-accordion {
+	margin: 0 0 var(--acme-gap);
+	border-top: 1px solid var(--acme-border);
+}
+
+.acme-accordion__item {
+	border-bottom: 1px solid var(--acme-border);
+}
+
+.acme-accordion__heading {
+	margin: 0;
+	font-size: inherit;
+}
+
+.acme-accordion__toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+	padding: 0.875rem 0.25rem;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-weight: 600;
+	text-align: left;
+	cursor: pointer;
+}
+
+.acme-accordion__toggle .acme-icon {
+	transition: transform var(--acme-speed) ease;
+}
+
+.acme-accordion__toggle[aria-expanded="true"] .acme-icon {
+	transform: rotate(180deg);
+}
+
+.acme-accordion__panel {
+	padding: 0 0.25rem 1rem;
+}
+
+.acme-accordion__panel[hidden] {
+	display: none;
+}
+
+/* Carousel -------------------------------------------------------------- */
+.acme-carousel {
+	position: relative;
+	margin: 0 0 var(--acme-gap);
+	overflow: hidden;
+	border-radius: var(--acme-radius);
+}
+
+.acme-carousel__viewport {
+	overflow: hidden;
+}
+
+.acme-carousel__track {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	will-change: transform;
+}
+
+.acme-carousel__slide {
+	flex: 0 0 100%;
+	margin: 0;
+	min-height: 12rem;
+	display: flex;
+	align-items: flex-end;
+	background: var(--acme-slide-color, #eef1f8);
+}
+
+.acme-carousel__caption {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	background: rgba(0, 0, 0, 0.55);
+	color: #fff;
+}
+
+.acme-carousel__prev,
+.acme-carousel__next {
+	position: absolute;
+	top: 40%;
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 0;
+	border-radius: 50%;
+	background: var(--acme-surface);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+}
+
+.acme-carousel__prev {
+	left: 0.75rem;
+}
+
+.acme-carousel__next {
+	right: 0.75rem;
+}
+
+.acme-carousel__status {
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	padding: 0.125rem 0.5rem;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.55);
+	color: #fff;
+	font-size: 0.8125rem;
+}

@@ -1,0 +1,47 @@
+/**
+ * Acme UI Kit – Accordion.
+ */
+.acme-accordion {
+	margin: 0 0 var(--acme-gap);
+	border-top: 1px solid var(--acme-border);
+}
+
+.acme-accordion__item {
+	border-bottom: 1px solid var(--acme-border);
+}
+
+.acme-accordion__heading {
+	margin: 0;
+	font-size: inherit;
+}
+
+.acme-accordion__toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+	padding: 0.875rem 0.25rem;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-weight: 600;
+	text-align: left;
+	cursor: pointer;
+}
+
+.acme-accordion__toggle .acme-icon {
+	transition: transform var(--acme-speed) ease;
+}
+
+.acme-accordion__toggle[aria-expanded="true"] .acme-icon {
+	transform: rotate(180deg);
+}
+
+.acme-accordion__panel {
+	padding: 0 0.25rem 1rem;
+}
+
+.acme-accordion__panel[hidden] {
+	display: none;
+}

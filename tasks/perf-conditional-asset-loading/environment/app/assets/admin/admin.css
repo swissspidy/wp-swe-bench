@@ -1,0 +1,15 @@
+.acme-ui-settings .acme-ui-preview {
+	margin-top: 1.5rem;
+	padding: 1rem;
+	max-width: 40rem;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+.acme-ui-settings .acme-ui-preview h2 {
+	margin-top: 0;
+}
+.acme-ui-settings .acme-ui-speed-value {
+	display: inline-block;
+	min-width: 4em;
+	margin-left: 0.5em;
+}

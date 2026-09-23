@@ -1,0 +1,24 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Outdoor with Acme UI Kit 2.8.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-ui-kit/acme-ui-kit.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Outdoor",
+				"acme_ui_settings": {
+					"accent": "#1e7a4c",
+					"speed": 150,
+					"autoplay": false
+				}
+			}
+		}
+	]
+}

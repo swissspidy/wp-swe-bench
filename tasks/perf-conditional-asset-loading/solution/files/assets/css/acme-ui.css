@@ -1,0 +1,24 @@
+/**
+ * Acme UI Kit – design tokens and shared utilities (component styles live in tabs.css, accordion.css, carousel.css).
+ */
+
+/* Tokens ---------------------------------------------------------------- */
+:root {
+	--acme-accent: #3858e9;
+	--acme-accent-contrast: #fff;
+	--acme-border: #d0d4dc;
+	--acme-surface: #fff;
+	--acme-muted: #5b616b;
+	--acme-radius: 6px;
+	--acme-gap: 1rem;
+	--acme-speed: 200ms;
+}
+
+.acme-ui-visually-hidden {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	white-space: nowrap;
+}
