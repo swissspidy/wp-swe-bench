@@ -141,6 +141,11 @@ The **agent's working directory is `$WPSB_REPO`**, a git repository inside
   object-cache drop-in from the tests themselves.
 - **Cron is disabled**; run events explicitly (`wp cron event run --due-now`, or
   `do_action( $hook )` in PHPUnit).
+- Fresh installs have a **draft `privacy-policy` page**; delete it before seeding a page with
+  that slug (otherwise you get `privacy-policy-2`).
+- Seeding **user global styles** from WP-CLI: `WP_Theme_JSON_Resolver::get_user_global_styles_post_id()`
+  without a logged-in user creates the `wp_global_styles` post without its `wp_theme` term, and
+  every later call creates a duplicate. Set the term explicitly when seeding.
 - Playground's HTTP server is slower than php-fpm (PHP-WASM): budget ~1–5 s per
   admin page and 10–30 s for a block-editor load.
 
