@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/faq-item",
+	"version": "2.0.0",
+	"title": "Question",
+	"category": "text",
+	"icon": "editor-help",
+	"parent": [ "acme/faq" ],
+	"description": "A question and its answer.",
+	"textdomain": "acme-faq",
+	"attributes": {
+		"question": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"reusable": false,
+		"interactivity": true
+	},
+	"editorScript": "file:./index.js"
+}

@@ -1,0 +1,31 @@
+.wp-block-acme-faq {
+	.acme-faq__item {
+		border-bottom: 1px solid currentColor;
+	}
+
+	.acme-faq__question {
+		cursor: pointer;
+		margin: 0;
+		padding: 0.75em 2em 0.75em 0;
+		position: relative;
+
+		&::after {
+			content: "+";
+			position: absolute;
+			right: 0.5em;
+		}
+	}
+
+	.is-open > .acme-faq__question::after {
+		content: "−";
+	}
+
+	.acme-faq__answer {
+		padding-bottom: 0.75em;
+	}
+
+	dl,
+	dd {
+		margin: 0;
+	}
+}

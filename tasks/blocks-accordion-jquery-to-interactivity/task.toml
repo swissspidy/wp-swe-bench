@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/blocks-accordion-jquery-to-interactivity"
+description = "Acme FAQ 2.0: replace a jQuery accordion with an accessible, server-rendered, script-module accordion (keyboard, deep links, allow-multiple), for 1.0 and 1.2 saved content without re-saving."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "gutenberg", "blocks", "interactivity", "accessibility", "deprecation", "dynamic-block", "script-modules"]
+
+[metadata]
+category = "blocks"
+tags = ["interactivity-api", "accessibility", "block-deprecation", "server-side-render", "legacy-content", "structured-data", "script-modules", "build-step"]
+difficulty = "hard"
+estimated_human_hours = 6
+source = "original"
+repo = "acme-faq (custom plugin, ~700 LOC PHP/JS)"
+starting_state = "Acme FAQ 1.3.1 active; pages with 1.0 definition-list FAQs, 1.2/1.3 FAQs (open-first, custom anchor, nested in a group), two FAQs on one page"
+multi_step = false
+
+[verifier]
+timeout_sec = 1800.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480

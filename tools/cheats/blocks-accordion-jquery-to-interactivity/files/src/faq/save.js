@@ -1,0 +1,8 @@
+/**
+ * The FAQ is rendered on the server; only the questions are saved.
+ */
+import { InnerBlocks } from '@wordpress/block-editor';
+
+export default function save() {
+	return <InnerBlocks.Content />;
+}
