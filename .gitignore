@@ -5,4 +5,4 @@ jobs/
 node_modules/
 
 tools/results/*.json
-!tools/results/summary.md
+tools/results/summary.md
