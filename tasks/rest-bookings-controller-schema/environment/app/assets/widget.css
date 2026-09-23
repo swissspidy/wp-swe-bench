@@ -1,0 +1,5 @@
+.acme-availability { border: 1px solid currentColor; padding: 1em 1.25em; border-radius: 4px; }
+.acme-availability__booked { list-style: none; margin: 0 0 1em; padding: 0; }
+.acme-availability__booked li { padding: .15em 0; }
+.acme-availability__form { display: flex; flex-wrap: wrap; gap: .75em; align-items: end; }
+.acme-availability__message.is-error { color: #b32d2e; }

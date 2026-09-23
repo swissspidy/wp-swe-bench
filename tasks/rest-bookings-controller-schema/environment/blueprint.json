@@ -1,0 +1,17 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Guest Houses with Acme Bookings 1.6.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Guest Houses",
+				"acme_bookings_currency": "EUR",
+				"acme_bookings_office_email": "office@example.org"
+			}
+		}
+	]
+}
