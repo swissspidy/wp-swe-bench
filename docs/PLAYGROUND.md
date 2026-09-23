@@ -39,6 +39,9 @@ with `wp-playground-cli run-blueprint` against the same directory, then an optio
 | Offline at runtime? | **Yes.** Oracle/nop/cheat validation runs with `docker run --network none`. `WP_HTTP_BLOCK_EXTERNAL` is on. |
 | DOM / libxml in Playground PHP? | Yes (`DOMDocument` works in both runtimes). |
 | Pretty permalinks in Playground? | Yes. |
+| Multisite? | **Yes** (subdirectory; `wp core multisite-convert` in seed.sh). Sub-site front ends, REST, admin and Network Admin work through Playground; `/<site>/wp-login.php` is not rewritten (build auth cookies directly). ~1,100 tables → ~2 s per sub-site request. |
+| Schema introspection via the SQLite driver? | `SHOW COLUMNS`, `DESCRIBE`, `SHOW INDEX`, `information_schema`, `ALTER TABLE` ADD/DROP/CHANGE COLUMN and ADD/DROP INDEX, `CONCAT`, `CASE` work. `SUBSTRING_INDEX` is unsupported, `GET_LOCK` is not meaningful, dropping a nonexistent column reports success. |
+| Reset the DB inside a PHPUnit run? | `sqlite3 <db> ".restore /opt/wpsb/pristine/.ht.sqlite"` restores in place; both native PHP and Playground see it without a restart. |
 
 ## Caveats
 
