@@ -141,6 +141,9 @@ The **agent's working directory is `$WPSB_REPO`**, a git repository inside
   object-cache drop-in from the tests themselves.
 - **Cron is disabled**; run events explicitly (`wp cron event run --due-now`, or
   `do_action( $hook )` in PHPUnit).
+- `wpsb-provision` flushes rewrite rules **before** the blueprint activates plugins; if your
+  plugin registers post types/taxonomies/rewrites, run `wp rewrite flush` at the end of `seed.sh`.
+- Migrated-but-unedited blocks are not re-serialized by `savePost()`: change something first.
 - Fresh installs have a **draft `privacy-policy` page**; delete it before seeding a page with
   that slug (otherwise you get `privacy-policy-2`).
 - Seeding **user global styles** from WP-CLI: `WP_Theme_JSON_Resolver::get_user_global_styles_post_id()`
