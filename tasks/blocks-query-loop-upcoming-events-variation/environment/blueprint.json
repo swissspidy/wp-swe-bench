@@ -1,0 +1,28 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Events Lite 1.6.2 on Twenty Twenty-Five (Auckland)",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-events-lite/acme-events-lite.php"
+		},
+		{
+			"step": "activateTheme",
+			"themeFolderName": "twentytwentyfive"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Auckland",
+				"timezone_string": "Pacific/Auckland",
+				"gmt_offset": "",
+				"date_format": "j F Y",
+				"time_format": "H:i",
+				"start_of_week": 1
+			}
+		}
+	]
+}
