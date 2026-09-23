@@ -1,0 +1,15 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme sales site (Acme CRM 1.4.0 files, 1.2 database)",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Sales"
+			}
+		}
+	]
+}
