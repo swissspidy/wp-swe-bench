@@ -42,7 +42,7 @@ _wpsb_record() {
 
 wpsb_init() {
   mkdir -p "$WPSB_LOGS" "$WPSB_CHECKS"
-  rm -f "$WPSB_CHECKS"/*.json "$WPSB_LOGS/reward.json" "$WPSB_LOGS/reward.txt"
+  rm -f "$WPSB_CHECKS"/*.json "$WPSB_LOGS/reward.json" "$WPSB_LOGS/reward.txt" "$WPSB_LOGS/debug-accumulated.log"
   WPSB_FINISHED=0
   trap '_wpsb_on_exit' EXIT
   _wpsb_log "grading started (lib $WPSB_LIB)"
@@ -84,6 +84,8 @@ wpsb_integrity() {
 # Restore pristine DB + uploads (code is kept). Stops the server if it is running.
 wpsb_reset_site() {
   wpsb-server stop >/dev/null 2>&1 || true
+  # wpsb-reset clears debug.log; keep what was logged so far for wpsb_no_fatals.
+  if [ -f /wordpress/wp-content/debug.log ]; then cat /wordpress/wp-content/debug.log >> "$WPSB_LOGS/debug-accumulated.log"; fi
   wpsb-reset > "$WPSB_LOGS/reset.log" 2>&1 || { _wpsb_record reset 1 0 1 "wpsb-reset failed: $(tail -c 1000 "$WPSB_LOGS/reset.log")"; return 1; }
 }
 
@@ -172,7 +174,7 @@ wpsb_php_lint() {
 # Fail if PHP fatal errors / uncaught exceptions landed in debug.log during grading.
 wpsb_no_fatals() {
   local name="${1:-no_fatals}" log=/wordpress/wp-content/debug.log
-  if [ -f "$log" ] && grep -E 'PHP (Fatal error|Parse error)|Uncaught ' "$log" > "$WPSB_LOGS/$name.log"; then
+  if cat "$WPSB_LOGS/debug-accumulated.log" "$log" 2>/dev/null | grep -E 'PHP (Fatal error|Parse error)|Uncaught ' > "$WPSB_LOGS/$name.log"; then
     _wpsb_record "$name" 1 0 1 "PHP fatals in debug.log: $(head -c 1500 "$WPSB_LOGS/$name.log")"
   else
     _wpsb_record "$name" 1 1 1

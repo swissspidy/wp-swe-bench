@@ -93,6 +93,12 @@ export async function waitForEditor(page) {
 		prefs?.set('core/edit-site', 'welcomeGuide', false);
 		prefs?.set('core', 'enableChoosePatternModal', false);
 	});
+	// A welcome guide that was already rendered does not close when the preference changes.
+	const guide = page.locator('.components-guide');
+	if (await guide.count()) {
+		await page.keyboard.press('Escape');
+		await guide.waitFor({ state: 'detached', timeout: 5_000 }).catch(() => {});
+	}
 	// Let block parsing / validation settle.
 	await page.waitForFunction(() => !window.wp.data.select('core/editor').isSavingPost?.(), null, { timeout: 60_000 });
 	await page.waitForTimeout(500);

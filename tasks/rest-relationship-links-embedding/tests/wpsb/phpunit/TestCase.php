@@ -314,9 +314,10 @@ abstract class TestCase extends PHPUnitTestCase {
 	// -------------------------------------------------------------------------
 
 	/** Run native WP-CLI in a subprocess (committed data only). */
-	protected function wp_cli( string $args ): array {
+	protected function wp_cli( string $args, array $env = array() ): array {
 		$this->assert_not_in_transaction( 'wp_cli' );
-		$proc = proc_open( 'wp ' . $args, array( 1 => array( 'pipe', 'w' ), 2 => array( 'pipe', 'w' ) ), $pipes, '/wordpress' );
+		$env  = $env ? array_merge( getenv(), $env ) : null;
+		$proc = proc_open( 'wp ' . $args, array( 1 => array( 'pipe', 'w' ), 2 => array( 'pipe', 'w' ) ), $pipes, '/wordpress', $env );
 		$out  = stream_get_contents( $pipes[1] );
 		$err  = stream_get_contents( $pipes[2] );
 		$code = proc_close( $proc );
