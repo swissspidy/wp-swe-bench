@@ -1,0 +1,25 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Coffee Roasters shop with Acme Loyalty 2.3.1",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-loyalty/acme-loyalty.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Coffee Roasters",
+				"acme_loyalty_settings": {
+					"points_per_currency": 2,
+					"welcome_bonus": 50,
+					"double_optin": true,
+					"store_names": ["Downtown", "Harbour", "Online"]
+				}
+			}
+		}
+	]
+}

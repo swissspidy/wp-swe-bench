@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/arch-privacy-export-erase-integration"
+description = "Acme Loyalty 2.4: integrate four personal-data stores (user meta incl. 1.x keys, an append-only points ledger, a guest newsletter table, order notes in post meta) with core's export/erase tools, with case-insensitive email matching, correct paging under mutation, anonymize-vs-delete rules, retained-item reporting, a retention setting + daily cron clean-up and privacy policy text."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "privacy", "gdpr", "personal-data-export", "personal-data-erasure", "wp-cron", "settings-api", "custom-tables", "legacy-data"]
+
+[metadata]
+category = "plugin-architecture"
+tags = ["privacy-exporters", "privacy-erasers", "paging", "anonymization", "data-retention", "wp-cron", "privacy-policy-content", "settings-api", "custom-tables", "legacy-data", "case-insensitive-matching"]
+difficulty = "very-hard"
+estimated_human_hours = 6
+source = "original"
+repo = "acme-loyalty (custom plugin, ~1300 LOC: ledger + subscribers custom tables, member profile meta with 1.x fallbacks, order CPT with notes, account/newsletter shortcodes, settings page, WP-CLI)"
+starting_state = "Acme Loyalty 2.3.1; members with 2.x and 1.x profile meta, a member with 250 ledger rows (old email on early rows), ledger rows of a deleted account, 1.x mixed-case newsletter addresses, guest orders, processing orders, look-alike addresses of other people, newsletter rows of various ages/statuses"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
