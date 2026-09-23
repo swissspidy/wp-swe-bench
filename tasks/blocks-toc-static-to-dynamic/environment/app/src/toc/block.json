@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/toc",
+	"version": "1.4.2",
+	"title": "Table of Contents",
+	"category": "design",
+	"icon": "list-view",
+	"description": "Lists the headings of the article with links to them.",
+	"keywords": [ "toc", "contents", "index", "headings" ],
+	"textdomain": "acme-toc",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".acme-toc__title",
+			"default": "Table of contents"
+		},
+		"maxLevel": {
+			"type": "number",
+			"default": 3
+		},
+		"excludedBlocks": {
+			"type": "array",
+			"default": []
+		},
+		"headings": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

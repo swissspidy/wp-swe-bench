@@ -1,0 +1,23 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme docs site with Acme TOC 1.4.2",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-toc/acme-toc.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Docs",
+				"acme_toc_options": {
+					"max_level": 3,
+					"smooth_scroll": true
+				}
+			}
+		}
+	]
+}

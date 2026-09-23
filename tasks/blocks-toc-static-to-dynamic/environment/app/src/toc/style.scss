@@ -1,0 +1,19 @@
+.wp-block-acme-toc {
+	border-left: 3px solid currentColor;
+	padding-left: 1em;
+
+	.acme-toc__title {
+		font-weight: 700;
+		margin: 0 0 0.5em;
+	}
+
+	.acme-toc__list {
+		margin: 0;
+		padding-left: 1.25em;
+	}
+
+	.acme-toc__item--h3 { margin-left: 1em; }
+	.acme-toc__item--h4 { margin-left: 2em; }
+	.acme-toc__item--h5 { margin-left: 3em; }
+	.acme-toc__item--h6 { margin-left: 4em; }
+}

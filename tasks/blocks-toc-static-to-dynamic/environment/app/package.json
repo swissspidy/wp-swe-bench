@@ -1,0 +1,15 @@
+{
+	"name": "acme-toc",
+	"version": "1.4.2",
+	"private": true,
+	"description": "Table of contents block.",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:js": "wp-scripts lint-js src"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^35.0.0"
+	}
+}

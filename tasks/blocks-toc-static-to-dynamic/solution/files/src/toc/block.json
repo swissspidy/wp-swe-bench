@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/toc",
+	"version": "2.0.0",
+	"title": "Table of Contents",
+	"category": "design",
+	"icon": "list-view",
+	"description": "Lists the headings of the article with links to them.",
+	"keywords": [ "toc", "contents", "index", "headings" ],
+	"textdomain": "acme-toc",
+	"attributes": {
+		"title": {
+			"type": "string"
+		},
+		"minLevel": {
+			"type": "number",
+			"default": 2
+		},
+		"maxLevel": {
+			"type": "number",
+			"default": 3
+		},
+		"excludedBlocks": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"usesContext": [ "postId", "postType" ],
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
