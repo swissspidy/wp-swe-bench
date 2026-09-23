@@ -38,7 +38,7 @@ BASE_IMAGE = f"ghcr.io/swissspidy/wp-swe-bench-base:{BASE_TAG}"
 
 
 SLOTS_DIR = Path(os.environ.get("WPSB_SLOTS_DIR", "/tmp/wpsb-validate-slots"))
-SLOTS = int(os.environ.get("WPSB_VALIDATE_SLOTS", "3"))
+SLOTS = int(os.environ.get("WPSB_VALIDATE_SLOTS", "2"))
 
 
 @contextlib.contextmanager
@@ -109,7 +109,9 @@ class Container:
     def __init__(self, tag: str, name: str, network: str):
         self.name = name
         sh(["docker", "rm", "-f", name], check=False)
-        sh(["docker", "run", "-d", "--name", name, "--network", network, "--shm-size", "2g", tag, "sleep", "infinity"])
+        sh(["docker", "run", "-d", "--name", name, "--network", network, "--shm-size", "1g",
+            "--memory", os.environ.get("WPSB_TRIAL_MEMORY", "3g"), "--cpus", os.environ.get("WPSB_TRIAL_CPUS", "2"),
+            tag, "sleep", "infinity"])
 
     def exec(self, cmd: str, timeout: int, workdir: str | None = None, env: dict | None = None):
         args = ["docker", "exec"]
