@@ -1,0 +1,29 @@
+.acme-glossary-term {
+	border-bottom: 1px dotted currentColor;
+	cursor: help;
+}
+
+.acme-glossary-bubble {
+	background: #1e1e1e;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 0.875rem;
+	max-width: 20rem;
+	padding: 0.5rem 0.75rem;
+	position: absolute;
+	z-index: 1000;
+}
+
+.acme-glossary-index__letter {
+	border-bottom: 1px solid currentColor;
+	margin-top: 2rem;
+}
+
+.acme-glossary-index dt {
+	font-weight: 700;
+	margin-top: 0.75rem;
+}
+
+.acme-glossary-index dd {
+	margin-left: 0;
+}

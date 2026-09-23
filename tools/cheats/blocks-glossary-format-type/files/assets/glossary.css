@@ -1,0 +1,56 @@
+.acme-glossary-term {
+	border-bottom: 1px dotted currentColor;
+	cursor: help;
+	position: relative;
+}
+
+.acme-glossary-term:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* The definition is part of the markup (for assistive technology) and shown on hover/focus. */
+.acme-glossary-term__definition {
+	background: #1e1e1e;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 400;
+	left: 0;
+	max-width: 20rem;
+	opacity: 0;
+	padding: 0.5rem 0.75rem;
+	pointer-events: none;
+	position: absolute;
+	top: calc(100% + 6px);
+	transition: opacity 0.15s;
+	visibility: hidden;
+	width: max-content;
+	z-index: 1000;
+}
+
+.acme-glossary-term:hover > .acme-glossary-term__definition,
+.acme-glossary-term:focus > .acme-glossary-term__definition {
+	opacity: 1;
+	visibility: visible;
+}
+
+.acme-glossary-term.is-dismissed > .acme-glossary-term__definition {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.acme-glossary-index__letter {
+	border-bottom: 1px solid currentColor;
+	margin-top: 2rem;
+}
+
+.acme-glossary-index dt {
+	font-weight: 700;
+	margin-top: 0.75rem;
+}
+
+.acme-glossary-index dd {
+	margin-left: 0;
+}

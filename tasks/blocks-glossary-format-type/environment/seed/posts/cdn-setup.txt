@@ -1,0 +1,3 @@
+Put a [glossary term="cdn"]CDN[/glossary] in front of the [glossary term="origin-server"]origin[/glossary].
+
+<strong>Tip:</strong> plan your [glossary]cache invalidation[/glossary] rules, see [glossary id="%TTFB%"]time to first byte[/glossary], and ignore [glossary term="nothing-here"]this one[/glossary].

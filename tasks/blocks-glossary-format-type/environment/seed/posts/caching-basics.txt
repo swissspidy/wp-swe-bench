@@ -1,0 +1,5 @@
+Every fast site relies on a [glossary]Cache[/glossary]. Our [glossary term="CDN"]content delivery network[/glossary] also runs [glossary term="edge-function"]edge functions[/glossary].
+
+Measure the [glossary id="%TTFB%"]TTFB[/glossary] before and after. Unknown terms stay plain: [glossary term="does-not-exist"]mystery meat[/glossary].
+
+Drafts are never explained: [glossary term="cache-stampede"]stampedes[/glossary]. Neither are private notes: [glossary term="internal-cdn"]our internal CDN[/glossary].

@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/glossary-index",
+	"version": "1.8.0",
+	"title": "Glossary index",
+	"category": "widgets",
+	"icon": "book-alt",
+	"description": "All glossary terms with their short definitions, A–Z.",
+	"keywords": [ "glossary", "terms", "dictionary" ],
+	"textdomain": "acme-glossary",
+	"attributes": {
+		"showLetters": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide" ]
+	},
+	"editorScript": "file:./index.js"
+}
