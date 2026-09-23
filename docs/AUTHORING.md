@@ -119,7 +119,8 @@ Docker-in-Docker, no MySQL sidecar):
    Use it for plugin/theme activation, options, and installing pinned
    wordpress.org plugins/themes (`installPlugin` with a versioned zip URL:
    `https://downloads.wordpress.org/plugin/<slug>.<version>.zip`).
-4. Runs `/opt/wpsb/task/seed.sh` (native WP-CLI) if present. Use it for content
+4. Runs `/opt/wpsb/task/seed.sh` (native WP-CLI) if present **and executable** (`chmod +x`;
+   git keeps the bit). Use it for content
    fixtures (posts with legacy markup, users, terms, meta, custom tables…).
 5. Snapshots DB + uploads to `/opt/wpsb/pristine` (the verifier restores this).
 6. `git init` + "Initial import" commit in `$WPSB_REPO` so the agent (and
