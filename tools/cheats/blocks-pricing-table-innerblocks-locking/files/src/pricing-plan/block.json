@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/pricing-plan",
+	"version": "2.0.0",
+	"title": "Pricing plan",
+	"category": "widgets",
+	"icon": "tag",
+	"description": "One plan of a pricing table.",
+	"parent": [ "acme/pricing-table" ],
+	"textdomain": "acme-pricing",
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": "",
+			"role": "content"
+		},
+		"price": {
+			"type": "string",
+			"default": "",
+			"role": "content"
+		},
+		"period": {
+			"type": "string",
+			"default": "",
+			"role": "content"
+		},
+		"featured": {
+			"type": "boolean",
+			"default": false
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "",
+			"role": "content"
+		},
+		"buttonUrl": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [ "acme/pricingCurrency" ],
+	"allowedBlocks": [ "core/list" ],
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

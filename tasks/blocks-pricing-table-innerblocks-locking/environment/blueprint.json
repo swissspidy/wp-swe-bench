@@ -1,0 +1,23 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme marketing site with Acme Pricing Tables 1.6.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-pricing/acme-pricing.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Marketing",
+				"acme_pricing_options": {
+					"default_currency": "USD",
+					"schema": true
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,64 @@
+/**
+ * Front-end + editor styles of the pricing table.
+ */
+.wp-block-acme-pricing-table.acme-pricing {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(var(--acme-pricing-columns, 3), minmax(0, 1fr));
+
+	&.acme-pricing--cols-1 { --acme-pricing-columns: 1; }
+	&.acme-pricing--cols-2 { --acme-pricing-columns: 2; }
+	&.acme-pricing--cols-3 { --acme-pricing-columns: 3; }
+	&.acme-pricing--cols-4 { --acme-pricing-columns: 4; }
+
+	@media (max-width: 781px) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.acme-pricing__plan {
+	border: 1px solid currentColor;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 1.5rem;
+
+	&.is-highlighted,
+	&.acme-pricing__plan--featured {
+		border-width: 3px;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+	}
+}
+
+.acme-pricing__name {
+	font-size: 1.25rem;
+	margin: 0;
+}
+
+.acme-pricing__price {
+	margin: 0;
+}
+
+.acme-pricing__amount {
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.acme-pricing__period {
+	opacity: 0.7;
+}
+
+.acme-pricing__features {
+	flex: 1;
+	margin: 0;
+	padding-left: 1.25rem;
+}
+
+.acme-pricing__button {
+	align-self: flex-start;
+	border: 2px solid currentColor;
+	border-radius: 4px;
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+}

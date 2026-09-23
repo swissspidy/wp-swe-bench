@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/blocks-pricing-table-innerblocks-locking"
+description = "Acme Pricing 2.0: rebuild a monolithic attribute-array pricing table as table + plan child blocks with structure rules, plan-count sync, exclusive featured plan, role-based locking and migration of two legacy formats."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "gutenberg", "blocks", "innerblocks", "deprecation", "migration", "template-lock", "block-context", "dynamic-block", "json-ld"]
+
+[metadata]
+category = "blocks"
+tags = ["innerblocks", "block-deprecation", "content-migration", "parent-child-blocks", "template-lock", "role-based-editing", "block-context", "server-side-render", "structured-data", "build-step"]
+difficulty = "very-hard"
+estimated_human_hours = 7
+source = "original"
+repo = "acme-pricing (custom plugin, ~1000 LOC PHP/JS)"
+starting_state = "Acme Pricing 1.6.0 active; pages with 1.3–1.6 tables (USD/CHF/EUR/GBP, hidden plan, table inside a group), a 1.0–1.2 format table, [acme_price] shortcode post; editor1/author1 users"
+multi_step = false
+
+[verifier]
+timeout_sec = 1800.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480

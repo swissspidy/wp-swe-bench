@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/pricing-table",
+	"version": "2.0.0",
+	"title": "Pricing table",
+	"category": "widgets",
+	"icon": "money-alt",
+	"description": "Compare plans side by side, with prices, features and a call to action.",
+	"keywords": [ "plans", "prices", "pricing", "subscription" ],
+	"textdomain": "acme-pricing",
+	"attributes": {
+		"currency": {
+			"type": "string",
+			"default": "USD"
+		}
+	},
+	"providesContext": {
+		"acme/pricingCurrency": "currency"
+	},
+	"allowedBlocks": [ "acme/pricing-plan" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
