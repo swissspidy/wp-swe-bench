@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/event-details",
+	"version": "2.3.0",
+	"title": "Event details",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Date, time and venue of the current event.",
+	"textdomain": "acme-events",
+	"usesContext": [ "postId", "postType" ],
+	"attributes": {
+		"showEnd": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

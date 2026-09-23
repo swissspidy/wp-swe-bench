@@ -1,0 +1,46 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/upcoming-events",
+	"version": "2.4.0",
+	"title": "Upcoming Events",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "A list or grid of upcoming (or past) events.",
+	"keywords": [ "events", "calendar", "listing" ],
+	"textdomain": "acme-events",
+	"attributes": {
+		"limit": {
+			"type": "integer",
+			"default": 5
+		},
+		"category": {
+			"type": "string",
+			"default": ""
+		},
+		"showPast": {
+			"type": "boolean",
+			"default": false
+		},
+		"layout": {
+			"type": "string",
+			"enum": [ "list", "grid" ],
+			"default": "list"
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"showVenue": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"render": "file:./render.php"
+}

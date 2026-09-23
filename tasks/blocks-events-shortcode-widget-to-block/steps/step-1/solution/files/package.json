@@ -1,0 +1,15 @@
+{
+  "name": "acme-events",
+  "version": "2.4.0",
+  "private": true,
+  "description": "Event listings for the Acme sites.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}

@@ -1,0 +1,13 @@
+.wp-block-acme-event-details {
+	border-left: 4px solid currentColor;
+	padding-left: 1em;
+
+	.acme-event-details__when {
+		font-weight: 600;
+		margin: 0;
+	}
+
+	.acme-event-details__where {
+		margin: 0.25em 0 0;
+	}
+}
