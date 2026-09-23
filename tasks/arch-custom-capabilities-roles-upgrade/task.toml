@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/arch-custom-capabilities-roles-upgrade"
+description = "Acme Newsroom 3.0: give the story CPT its own capability model (primitive + meta caps incl. approve_story and an approval lock), add a Freelancer role, and ship an automatic, idempotent upgrade that grants caps to existing (customized) roles and migrates flagged contributors."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "capabilities", "roles", "map_meta_cap", "custom-post-type", "upgrade-routine", "rest-api", "editorial-workflow"]
+
+[metadata]
+category = "plugin-architecture"
+tags = ["custom-capabilities", "meta-capabilities", "roles", "user-migration", "idempotent-upgrade", "rest-permissions", "admin-list-table", "legacy-meta"]
+difficulty = "hard"
+estimated_human_hours = 5
+source = "original"
+repo = "acme-newsroom (custom plugin, ~1050 LOC)"
+starting_state = "Acme Newsroom 2.3.0 active; roles customized by the site owner (author without publish_posts, editor with manage_newsletter, custom Section Editor and Newsletter Manager roles); freelancers flagged via user meta in 1.x/2.x formats incl. a multi-role user and a flagged staff author; stories in every state incl. legacy 1.x approvals"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
