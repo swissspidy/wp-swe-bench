@@ -75,7 +75,90 @@ python3 tools/validate.py <id> --modes oracle --keep && tools/retest.sh <id> ora
 
 ## Tasks
 
-_Status table generated from `tools/results/` (see below)._
+50 tasks, 8 of them multi-step (2–3 steps each, 17 steps in total); total estimated human
+effort ≈ 300 hours.
+
+| Category | Tasks |
+|---|---|
+| `blocks` (deprecations & content migration, dynamic blocks, InnerBlocks/locking, bindings, Interactivity API, block hooks, theme.json v3, template parts, Site Editor templates, variations/transforms, pattern overrides, rich-text formats) | 21 |
+| `rest-api` (controllers & schemas, batch, settings endpoint + React UI, meta & revisions, custom tables, webhooks/HMAC, links & embedding, visibility) | 9 |
+| `plugin-architecture` (multisite lifecycle, versioned migrations, background queues, WP-CLI suites, Settings API, capabilities & roles, privacy tools) | 7 |
+| `bugfix` (incl. a pinned real plugin with a historical upstream bug and one with an injected regression) | 6 |
+| `performance` (N+1, cache invalidation & stampedes, conditional assets, autoload bloat, denormalized queries; measured by query counts) | 5 |
+| `security` (broken access control across all REST paths; SSRF / object injection / XSS) | 2 |
+
+Security requirements (capability checks, nonces, escaping, prepared SQL, safe CSV) are also graded
+in many tasks of the other categories.
+
+### Validation status
+
+Every task was validated offline (`docker run --network none`) with `tools/validate.py` against the
+final grading library: the reference solution (**oracle**) scores 1, doing nothing (**nop**) scores 0,
+and a plausible-but-incomplete shortcut (**cheat**, kept in `tools/cheats/`, never shipped) scores 0.
+For multi-step tasks the columns show per-step rewards; a cheat may target a single step (the
+validator runs the oracle for the other steps), and must fail the step it targets. The exemplar
+`blocks-callout-innerblocks-migration` and the multi-step `rest-member-directory-visibility` were
+additionally run through Harbor itself (`harbor run -a oracle`).
+
+"Reference diff" is the size of the oracle's change to the agent's repository (excluding build output
+and lockfiles; for multi-step tasks, cumulative after the last step).
+
+| Task | Category | Difficulty | Est. hours | Steps | Reference diff | Oracle (=1) | Nop (=0) | Cheat (=0) |
+|---|---|---|---|---|---|---|---|---|
+| `arch-background-import-queue` | plugin-architecture | very-hard | 10 | 2 | 14 files, +1863/−60 | ✅ 1 | ✅ 0 | ✅ 0/0 |
+| `arch-custom-capabilities-roles-upgrade` | plugin-architecture | hard | 5 | 1 | 9 files, +295/−139 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `arch-multisite-network-activation` | plugin-architecture | hard | 5 | 1 | 11 files, +459/−51 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `arch-privacy-export-erase-integration` | plugin-architecture | very-hard | 6 | 1 | 8 files, +731/−5 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `arch-settings-api-consolidation` | plugin-architecture | hard | 5 | 1 | 14 files, +1007/−376 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `arch-versioned-schema-migrations` | plugin-architecture | very-hard | 10 | 3 | 16 files, +1330/−90 | ✅ 1 | ✅ 0 | ✅ 0/0/0 |
+| `arch-wpcli-command-suite` | plugin-architecture | hard | 6 | 1 | 8 files, +997/−138 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-accordion-jquery-to-interactivity` | blocks | hard | 6 | 1 | 16 files, +461/−90 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-apiv3-iframe-editor-compat` | blocks | hard | 5 | 1 | 14 files, +211/−116 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-block-hooks-newsletter` | blocks | hard | 5 | 1 | 10 files, +299/−29 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-callout-innerblocks-migration` | blocks | hard | 4 | 1 | 14 files, +412/−84 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-classic-theme-to-template-parts` | blocks | hard | 6 | 1 | 19 files, +458/−154 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-contact-form-block-submissions` | blocks | very-hard | 9 | 1 | 31 files, +1803/−12 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-cpt-block-templates` | blocks | hard | 5 | 1 | 21 files, +599/−6 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-editorial-block-restrictions` | blocks | hard | 5 | 1 | 8 files, +303/−32 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-events-shortcode-widget-to-block` | blocks | very-hard | 7 | 2 | 17 files, +947/−120 | ✅ 1 | ✅ 0 | ✅ 1/0 |
+| `blocks-glossary-format-type` | blocks | very-hard | 6 | 1 | 16 files, +677/−55 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-interactivity-product-filter` | blocks | very-hard | 8 | 2 | 9 files, +509/−142 | ✅ 1 | ✅ 0 | ✅ 1/0 |
+| `blocks-legacy-attributes-to-block-supports` | blocks | very-hard | 6 | 1 | 20 files, +916/−212 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-media-card-variations-transforms` | blocks | hard | 4 | 1 | 11 files, +328/−16 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-pattern-overrides-custom-block` | blocks | hard | 4 | 1 | 9 files, +274/−43 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-pricing-table-innerblocks-locking` | blocks | very-hard | 7 | 1 | 17 files, +714/−243 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-query-loop-upcoming-events-variation` | blocks | very-hard | 6 | 1 | 13 files, +486/−42 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-recipe-metabox-to-editor` | blocks | hard | 5 | 1 | 13 files, +669/−20 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-team-directory-bindings-source` | blocks | very-hard | 7 | 2 | 9 files, +700/−4 | ✅ 1 | ✅ 0 | ✅ 0/0 |
+| `blocks-testimonial-deprecation-chain` | blocks | very-hard | 6 | 1 | 12 files, +381/−114 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-theme-json-v3-migration` | blocks | hard | 4 | 1 | 10 files, +257/−133 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `blocks-toc-static-to-dynamic` | blocks | hard | 5 | 1 | 12 files, +742/−96 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `bugfix-duplicate-post-meta-slashes` | bugfix | hard | 4 | 1 | 5 files, +32/−54 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `bugfix-events-timezone-dst` | bugfix | very-hard | 6 | 1 | 12 files, +403/−120 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `bugfix-metabox-rest-meta-race` | bugfix | hard | 4 | 1 | 7 files, +119/−41 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `bugfix-rewrite-rules-collision` | bugfix | hard | 5 | 1 | 7 files, +354/−86 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `bugfix-search-replace-serialized` | bugfix | hard | 5 | 1 | 8 files, +425/−73 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `bugfix-wordpress-importer-url-rewriting` | bugfix | very-hard | 6 | 1 | 13 files, +3042/−467 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `perf-archive-meta-query-denormalize` | performance | very-hard | 6 | 1 | 7 files, +392/−83 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `perf-autoload-options-bloat-migration` | performance | very-hard | 7 | 1 | 12 files, +911/−241 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `perf-conditional-asset-loading` | performance | hard | 5 | 1 | 13 files, +441/−216 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `perf-related-posts-n-plus-one` | performance | hard | 5 | 1 | 10 files, +398/−112 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `perf-stats-cache-invalidation` | performance | very-hard | 8 | 2 | 8 files, +571/−7 | ✅ 1 | ✅ 0 | ✅ 0/0 |
+| `rest-admin-ajax-to-rest-migration` | rest-api | hard | 6 | 1 | 9 files, +838/−143 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `rest-batch-support` | rest-api | hard | 5 | 1 | 7 files, +442/−222 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `rest-bookings-controller-schema` | rest-api | very-hard | 9 | 2 | 11 files, +1336/−279 | ✅ 1 | ✅ 0 | ✅ 0/0 |
+| `rest-custom-table-resource-controller` | rest-api | very-hard | 7 | 1 | 6 files, +945/−7 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `rest-member-directory-visibility` | rest-api | very-hard | 10 | 2 | 15 files, +1161/−48 | ✅ 1 | ✅ 0 | ✅ 1/0 |
+| `rest-meta-registration-revisions` | rest-api | very-hard | 6 | 1 | 10 files, +593/−34 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `rest-relationship-links-embedding` | rest-api | very-hard | 6 | 1 | 7 files, +578/−50 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `rest-settings-endpoint-react-page` | rest-api | very-hard | 7 | 1 | 11 files, +1175/−445 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `rest-webhook-app-passwords-hmac` | rest-api | very-hard | 7 | 1 | 16 files, +1088/−67 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `security-rest-idor-data-leak` | security | very-hard | 6 | 1 | 6 files, +294/−100 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `security-ssrf-object-injection-embed` | security | very-hard | 7 | 1 | 7 files, +359/−47 | ✅ 1 | ✅ 0 | ✅ 0 |
+
+### Agent results
+
+Not yet piloted with real agents. See [docs/DIFFICULTY.md](docs/DIFFICULTY.md) for the calibration plan.
 
 ## Contributing tasks
 
