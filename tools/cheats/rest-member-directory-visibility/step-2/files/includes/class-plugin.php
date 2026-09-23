@@ -45,6 +45,8 @@ final class Plugin {
 	 */
 	public function boot() {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
+		// Sites update the plugin in place: import the forum buddy lists on first load.
+		add_action( 'init', array( Connections::class, 'maybe_migrate_legacy' ), 5 );
 
 		$this->components = array(
 			'profile_page' => new Profile_Page(),

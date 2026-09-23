@@ -1,13 +1,17 @@
-# Cheat for rest-member-directory-visibility
+# Cheats for rest-member-directory-visibility
 
-The "obvious" fix: build the REST API and the profile form (complete, with validation) and call
-`Visibility::visible_fields( $id, get_current_user_id() )` on every surface. It misses the parts
-that need thinking about *who* the output is for:
+## step-2 (validated)
 
-- the RSS feed is rendered with the requesting user's view, so an administrator (or member)
-  fetching the feed - which aggregators then cache - exposes members-only/private data;
-- the directory's transient cache is still shared between all visitors, so whatever the first
-  visitor (e.g. an administrator) could see is served to anonymous visitors for 10 minutes;
-- hidden members are still listed in WordPress' users sitemap.
+The complete connections feature (API, `connections` level on every surface, form option), but the
+one-time import of the forum buddy lists treats every entry as an accepted connection. One-sided
+lists (Carol → Bob, Erin → Dave) must only become pending requests, which grant nothing; the
+cheat hands Bob Carol's connections-only data.
+Expected: ConnectionsTest fails -> step-2 reward 0.
 
-Expected: SurfacesTest fails -> reward 0.
+## step-1 (historical, validated at 0 before the task became multi-step)
+
+"Apply the visibility helper for the current user everywhere": REST API, profile form, core users
+field, search handler, author card and member sitemap fixed, but feeds use the requesting user's
+view, the directory's shared transient cache still leaks across visitors, and the core users
+sitemap still lists hidden members. Not kept as a file cheat so that cheat validation exercises
+step 2 (a failing step 1 stops the trial).

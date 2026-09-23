@@ -3,7 +3,7 @@ Contributors: acmeweb
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPL-2.0-or-later
 
 Member directory for the Acme Makers community.
@@ -24,6 +24,12 @@ Member directory for the Acme Makers community.
 * `[acme_member_edit_profile]`: members edit their own profile on the front end.
 
 == Changelog ==
+
+= 2.3.0 =
+* New: connections between members (request, accept, remove) and the visibility level
+  "My connections" (`connections`), respected everywhere member data is shown.
+* The buddy lists imported from the old forum become connections (mutual) or pending requests.
+* REST: `/acme-members/v1/members/me/connections`.
 
 = 2.2.0 =
 * New: directory REST API (`/acme-members/v1/members`, `/members/<id>`, `/members/me`).

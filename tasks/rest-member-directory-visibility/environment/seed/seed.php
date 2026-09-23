@@ -177,6 +177,15 @@ $henry = $mk(
 	)
 );
 
+// "Buddies" imported from the old community forum in 2019 (one-sided lists of user IDs; not used
+// by the plugin yet).
+update_user_meta( $carol, 'acme_member_buddies', array( $gina, $bob ) );
+update_user_meta( $gina, 'acme_member_buddies', array( $carol, $frank ) );
+update_user_meta( $frank, 'acme_member_buddies', array( $gina ) );
+update_user_meta( $alice, 'acme_member_buddies', array( $henry, 999999, 1 ) );
+update_user_meta( $henry, 'acme_member_buddies', array( $alice ) );
+update_user_meta( $erin, 'acme_member_buddies', array( $dave ) );
+
 // Filler members.
 for ( $i = 1; $i <= 14; $i++ ) {
 	$mk(

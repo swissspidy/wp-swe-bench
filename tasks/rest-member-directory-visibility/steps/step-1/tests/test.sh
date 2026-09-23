@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Hidden verifier for rest-member-directory-visibility.
+# Hidden verifier for rest-member-directory-visibility (step 1: directory API + visibility everywhere).
 source /tests/wpsb/wpsb.sh
 REPO=/wordpress/wp-content/plugins/acme-members
 

@@ -68,6 +68,41 @@ class Rest_Controller extends \WP_REST_Controller {
 
 		register_rest_route(
 			$this->namespace,
+			'/' . $this->rest_base . '/me/connections',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_connections' ),
+					'permission_callback' => array( $this, 'me_permissions_check' ),
+				),
+				array(
+					'methods'             => \WP_REST_Server::CREATABLE,
+					'callback'            => array( $this, 'create_connection' ),
+					'permission_callback' => array( $this, 'me_permissions_check' ),
+					'args'                => array(
+						'member' => array(
+							'type'     => 'integer',
+							'required' => true,
+						),
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/me/connections/(?P<member>[\d]+)',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::DELETABLE,
+					'callback'            => array( $this, 'delete_connection' ),
+					'permission_callback' => array( $this, 'me_permissions_check' ),
+				),
+			)
+		);
+
+		register_rest_route(
+			$this->namespace,
 			'/' . $this->rest_base . '/(?P<id>[\d]+)',
 			array(
 				array(
@@ -232,6 +267,74 @@ class Rest_Controller extends \WP_REST_Controller {
 		$user_id = get_current_user_id();
 		Profile_Service::save( $user_id, $result['changes'] );
 		return $this->prepare_item_for_response( $user_id, $request );
+	}
+
+	/**
+	 * GET /members/me/connections.
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function get_connections() {
+		$user_id = get_current_user_id();
+		return rest_ensure_response(
+			array(
+				'connections' => Connections::connected( $user_id ),
+				'incoming'    => Connections::incoming( $user_id ),
+				'outgoing'    => Connections::outgoing( $user_id ),
+			)
+		);
+	}
+
+	/**
+	 * POST /members/me/connections: request (or accept) a connection.
+	 *
+	 * @param \WP_REST_Request $request Request.
+	 * @return \WP_REST_Response|\WP_Error
+	 */
+	public function create_connection( $request ) {
+		$user_id = get_current_user_id();
+		$other   = (int) $request['member'];
+		if ( $other === $user_id ) {
+			$message = __( 'You cannot connect with yourself.', 'acme-members' );
+			return new \WP_Error(
+				'rest_invalid_param',
+				$message,
+				array(
+					'status' => 400,
+					'params' => array( 'member' => $message ),
+				)
+			);
+		}
+		// Only members you can see (don't reveal hidden ones), unless they already asked you.
+		$known = in_array( $other, Connections::incoming( $user_id ), true ) || Connections::are_connected( $user_id, $other );
+		if ( ! Members::is_member( $other ) || ( ! $known && ! Visibility::can_view_profile( $other, $user_id ) ) ) {
+			return new \WP_Error( 'acme_members_not_found', __( 'Member not found.', 'acme-members' ), array( 'status' => 404 ) );
+		}
+		return rest_ensure_response(
+			array(
+				'member' => $other,
+				'status' => Connections::request( $user_id, $other ),
+			)
+		);
+	}
+
+	/**
+	 * DELETE /members/me/connections/<member>: remove, cancel or decline.
+	 *
+	 * @param \WP_REST_Request $request Request.
+	 * @return \WP_REST_Response|\WP_Error
+	 */
+	public function delete_connection( $request ) {
+		$other = (int) $request['member'];
+		if ( ! Connections::remove( get_current_user_id(), $other ) ) {
+			return new \WP_Error( 'acme_members_not_found', __( 'No connection or request with this member.', 'acme-members' ), array( 'status' => 404 ) );
+		}
+		return rest_ensure_response(
+			array(
+				'member' => $other,
+				'status' => 'none',
+			)
+		);
 	}
 
 	/**
