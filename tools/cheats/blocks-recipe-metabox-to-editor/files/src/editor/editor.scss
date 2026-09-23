@@ -1,0 +1,13 @@
+.acme-recipe-panel {
+	.components-base-control + .components-base-control {
+		margin-top: 12px;
+	}
+
+	.acme-recipe-panel__ingredient {
+		margin-bottom: 8px;
+
+		input {
+			min-width: 0;
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/recipe-card",
+	"version": "2.0.0",
+	"title": "Recipe card",
+	"category": "widgets",
+	"icon": "carrot",
+	"description": "Shows the recipe card (times, servings, difficulty, ingredients) of this recipe here.",
+	"textdomain": "acme-recipes",
+	"usesContext": [ "postId", "postType" ],
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"align": [ "wide" ]
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

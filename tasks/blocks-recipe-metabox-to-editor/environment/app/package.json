@@ -1,0 +1,15 @@
+{
+  "name": "acme-recipes",
+  "version": "1.6.0",
+  "private": true,
+  "description": "Recipes for the Acme food blog.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build src/admin/metabox.js --output-path=build/admin",
+    "start": "wp-scripts start src/admin/metabox.js --output-path=build/admin",
+    "lint:js": "wp-scripts lint-js src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}

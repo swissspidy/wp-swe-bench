@@ -1,0 +1,14 @@
+.acme-recipe-details__row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+
+	label {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.acme-recipe-ingredients input {
+	width: 100%;
+}
