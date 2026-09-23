@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 1,
+	"name": "acme/chart",
+	"version": "1.6.0",
+	"title": "Bar chart",
+	"category": "acme",
+	"icon": "chart-bar",
+	"description": "A simple bar chart. Enter the data in the block settings or paste CSV.",
+	"keywords": [ "graph", "data", "statistics", "bars" ],
+	"textdomain": "acme-charts",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "figcaption"
+		},
+		"series": {
+			"type": "array",
+			"default": []
+		},
+		"height": {
+			"type": "number",
+			"default": 240
+		},
+		"showValues": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [ "wide", "full" ]
+	},
+	"styles": [
+		{ "name": "default", "label": "Default", "isDefault": true },
+		{ "name": "minimal", "label": "Minimal" }
+	],
+	"example": {
+		"attributes": {
+			"title": "Visitors per quarter",
+			"series": [
+				{ "label": "Q1", "value": 120 },
+				{ "label": "Q2", "value": 180 },
+				{ "label": "Q3", "value": 150 },
+				{ "label": "Q4", "value": 210 }
+			]
+		}
+	},
+	"editorScript": "file:./index.js"
+}

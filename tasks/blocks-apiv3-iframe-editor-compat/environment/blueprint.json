@@ -1,0 +1,24 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme reports site with Acme Charts 1.6.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-charts/acme-charts.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Reports",
+				"acme_charts_options": {
+					"palette": [ "#3858e9", "#e26f56", "#1a8f5c", "#dba617" ],
+					"default_height": 240,
+					"show_values": false
+				}
+			}
+		}
+	]
+}

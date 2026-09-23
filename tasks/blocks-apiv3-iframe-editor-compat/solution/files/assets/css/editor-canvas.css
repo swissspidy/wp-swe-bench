@@ -1,0 +1,25 @@
+/**
+ * Acme Charts: editor-only styles inside the editor canvas.
+ */
+
+/* Empty chart placeholder. */
+.acme-chart-placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 120px;
+	padding: 1em;
+	border: 1px dashed #949494;
+	border-radius: 2px;
+	color: #757575;
+	font-size: 13px;
+	text-align: center;
+}
+
+/* Legend that isn't linked to a chart yet. */
+.acme-legend.is-unlinked {
+	padding: 8px;
+	border: 1px dashed #949494;
+	color: #757575;
+	font-size: 13px;
+}

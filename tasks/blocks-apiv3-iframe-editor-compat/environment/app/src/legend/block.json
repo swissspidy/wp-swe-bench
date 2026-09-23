@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "acme/chart-legend",
+	"version": "1.6.0",
+	"title": "Chart legend",
+	"category": "acme",
+	"icon": "editor-ul",
+	"description": "Legend for a bar chart on the same page. Visitors can click an item to show or hide its bar.",
+	"keywords": [ "key", "series" ],
+	"textdomain": "acme-charts",
+	"attributes": {
+		"chartId": {
+			"type": "string",
+			"default": ""
+		},
+		"layout": {
+			"type": "string",
+			"default": "horizontal"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./index.js"
+}

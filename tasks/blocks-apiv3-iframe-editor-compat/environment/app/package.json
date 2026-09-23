@@ -1,0 +1,15 @@
+{
+  "name": "acme-charts",
+  "version": "1.6.0",
+  "private": true,
+  "description": "Bar chart and chart legend blocks for the Acme sites.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src assets/js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}

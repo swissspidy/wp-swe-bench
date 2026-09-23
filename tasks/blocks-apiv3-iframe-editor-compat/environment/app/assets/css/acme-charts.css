@@ -1,0 +1,107 @@
+/**
+ * Acme Charts: chart and legend styles (front end and editor preview).
+ */
+
+.acme-chart {
+	margin: 0 0 1.5em;
+	padding: 0;
+}
+
+.acme-chart__canvas {
+	position: relative;
+	width: 100%;
+	min-height: 80px;
+}
+
+.acme-chart__svg {
+	display: block;
+	overflow: visible;
+}
+
+.acme-chart__bar {
+	opacity: 1;
+}
+
+.acme-chart__bar.is-hidden {
+	opacity: 0.15;
+}
+
+.acme-chart__label,
+.acme-chart__value {
+	font-size: 12px;
+	font-family: inherit;
+	fill: #50575e;
+}
+
+.acme-chart__value {
+	font-weight: 600;
+}
+
+.acme-chart__title {
+	margin-top: 0.5em;
+	font-size: 0.875em;
+	font-weight: 600;
+	text-align: center;
+	color: #50575e;
+}
+
+/* The data table is for screen readers only. */
+.acme-chart__table {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.acme-chart.is-style-minimal .acme-chart__label {
+	display: none;
+}
+
+.acme-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 16px;
+	margin: 0 0 1.5em;
+	padding: 0;
+	list-style: none;
+}
+
+.acme-legend.is-vertical {
+	flex-direction: column;
+}
+
+.acme-legend li {
+	margin: 0;
+	padding: 0;
+}
+
+.acme-legend__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 2px 4px;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.acme-legend__item[aria-pressed="false"] {
+	opacity: 0.5;
+	text-decoration: line-through;
+}
+
+.acme-legend__swatch {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 2px;
+}

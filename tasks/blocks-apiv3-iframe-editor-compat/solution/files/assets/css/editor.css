@@ -1,0 +1,39 @@
+/**
+ * Acme Charts: editor UI styles (block settings sidebar).
+ *
+ * Styles for elements inside the editor canvas live in editor-canvas.css.
+ */
+
+/* Sidebar: series editor. */
+.acme-charts-series {
+	display: grid;
+	grid-template-columns: 1fr 72px 32px 32px;
+	gap: 4px 8px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.acme-charts-series__head {
+	font-size: 11px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: #757575;
+}
+
+.acme-charts-series .components-base-control__field {
+	margin-bottom: 0;
+}
+
+.acme-charts-series__swatch {
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.acme-charts-csv textarea {
+	font-family: monospace;
+	font-size: 12px;
+}
