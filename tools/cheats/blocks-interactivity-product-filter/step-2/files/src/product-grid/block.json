@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/product-grid",
+	"version": "2.1.0",
+	"title": "Product grid",
+	"category": "widgets",
+	"icon": "grid-view",
+	"description": "Products with category filters and a search field.",
+	"keywords": [
+		"products",
+		"shop",
+		"catalog",
+		"filter"
+	],
+	"textdomain": "acme-catalog",
+	"attributes": {
+		"heading": {
+			"type": "string",
+			"default": ""
+		},
+		"categories": {
+			"type": "array",
+			"default": []
+		},
+		"defaultCategory": {
+			"type": "string",
+			"default": ""
+		},
+		"showSearch": {
+			"type": "boolean",
+			"default": true
+		},
+		"orderBy": {
+			"type": "string",
+			"enum": [
+				"title",
+				"price",
+				"date"
+			],
+			"default": "title"
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"perPage": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"interactivity": true
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"viewScriptModule": "file:./view.js"
+}

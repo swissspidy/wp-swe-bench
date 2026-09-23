@@ -1,0 +1,23 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme shop with Acme Catalog 1.6.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-catalog/acme-catalog.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Shop",
+				"acme_catalog_options": {
+					"currency": "€",
+					"currency_position": "after"
+				}
+			}
+		}
+	]
+}

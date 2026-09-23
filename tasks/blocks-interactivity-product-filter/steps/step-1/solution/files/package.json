@@ -1,0 +1,15 @@
+{
+	"name": "acme-catalog",
+	"version": "2.0.0",
+	"private": true,
+	"description": "Acme product catalog.",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"build": "wp-scripts build --experimental-modules",
+		"start": "wp-scripts start --experimental-modules",
+		"lint:js": "wp-scripts lint-js src"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^35.0.0"
+	}
+}
