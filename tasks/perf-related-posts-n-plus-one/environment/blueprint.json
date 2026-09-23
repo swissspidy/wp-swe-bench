@@ -1,0 +1,29 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Journal with Acme Related 2.3.1",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-related/acme-related.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Journal",
+				"posts_per_page": 10,
+				"uploads_use_yearmonth_folders": "0",
+				"date_format": "F j, Y",
+				"acme_related_settings": {
+					"display": "everywhere",
+					"count": 4,
+					"heading": "Related reading",
+					"show_thumbnails": true,
+					"show_views": true
+				}
+			}
+		}
+	]
+}

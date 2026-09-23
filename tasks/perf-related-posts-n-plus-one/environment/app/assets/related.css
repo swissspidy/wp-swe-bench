@@ -1,0 +1,55 @@
+/* Acme Related – default styles. Themes may override. */
+.acme-related {
+	margin: 2.5rem 0 0;
+	padding-top: 1.5rem;
+	border-top: 1px solid currentColor;
+}
+.acme-related__heading {
+	font-size: 1.25rem;
+	margin: 0 0 1rem;
+}
+.acme-related__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+	gap: 1.25rem;
+}
+.acme-related__item {
+	display: flex;
+	gap: 0.75rem;
+	align-items: flex-start;
+}
+.acme-related__thumb img {
+	display: block;
+	width: 72px;
+	height: 72px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+.acme-related__category {
+	display: block;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	text-decoration: none;
+}
+.acme-related__title {
+	display: block;
+	font-weight: 600;
+	line-height: 1.3;
+}
+.acme-related__meta {
+	display: block;
+	font-size: 0.8125rem;
+	opacity: 0.8;
+}
+.acme-related__badge {
+	display: inline-block;
+	margin-top: 0.25rem;
+	padding: 0 0.4rem;
+	font-size: 0.7rem;
+	border: 1px solid currentColor;
+	border-radius: 2px;
+}
