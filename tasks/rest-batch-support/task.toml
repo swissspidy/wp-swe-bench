@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/rest-batch-support"
+description = "Acme Tasks 1.7: make the lists/tasks write routes work through core's batch endpoint (per-request results, all-or-nothing validation, per-request permissions, consistent positions, 50-request batches) without breaking legacy clients."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "rest-api", "batch", "validation", "permissions", "custom-table", "back-compat"]
+
+[metadata]
+category = "rest-api"
+tags = ["rest-batch", "require-all-validate", "args-validation", "permission-callback", "internal-dispatch", "positions", "legacy-clients", "custom-table"]
+difficulty = "hard"
+estimated_human_hours = 5
+source = "original"
+repo = "acme-tasks (custom plugin, ~1900 LOC: REST controllers, custom tables, CPT, vanilla-JS admin screen)"
+starting_state = "Acme Tasks 1.6.0 active; users alice/bob/carol/erin/sam; 7 task lists incl. two 1.2-era lists with gapped/duplicate positions and a 1.0 comma-separated member list; mu-plugin sending assignment mails from plugin hooks"
+multi_step = false
+
+[verifier]
+timeout_sec = 1800.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480

@@ -1,0 +1,11 @@
+.acme-tasks { max-width: 760px; }
+.acme-tasks.is-busy { opacity: 0.6; pointer-events: none; }
+.acme-tasks-toolbar, .acme-tasks-add { display: flex; gap: 8px; align-items: center; margin: 12px 0; flex-wrap: wrap; }
+.acme-tasks-new-list { display: flex; gap: 4px; margin-left: auto; }
+#acme-task-new-title { flex: 1; }
+.acme-tasks-items { list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid #dcdcde; }
+.acme-task { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid #f0f0f1; }
+.acme-task:last-child { border-bottom: 0; }
+.acme-task-title { flex: 1; }
+.acme-task.is-done .acme-task-title { text-decoration: line-through; color: #787c82; }
+.acme-task-due, .acme-task-assignee { color: #50575e; font-size: 12px; }
