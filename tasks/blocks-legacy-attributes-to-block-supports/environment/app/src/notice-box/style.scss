@@ -1,0 +1,15 @@
+.wp-block-acme-notice-box {
+	display: flex;
+	gap: 0.75rem;
+	padding: 1rem;
+	background-color: #e8f4fd;
+
+	&.is-bordered {
+		border: 2px solid currentColor;
+		background-color: transparent;
+	}
+}
+
+.wp-block-acme-notice-box__body {
+	flex: 1;
+}

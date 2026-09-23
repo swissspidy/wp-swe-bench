@@ -1,0 +1,10 @@
+// Layout only: colours, padding and font size come from the theme
+// (theme.json) and the block's own design settings.
+.wp-block-acme-notice-box {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.wp-block-acme-notice-box__body {
+	flex: 1;
+}

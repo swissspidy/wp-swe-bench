@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/stat",
+	"version": "1.5.0",
+	"title": "Statistic",
+	"category": "design",
+	"icon": "chart-bar",
+	"description": "A big number with a label, e.g. “99.9% uptime”.",
+	"keywords": [ "number", "kpi", "figure" ],
+	"textdomain": "acme-content-blocks",
+	"attributes": {
+		"value": {
+			"type": "string",
+			"default": ""
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"alignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"color": {
+			"type": "string"
+		},
+		"fontSize": {
+			"type": "number",
+			"default": 48
+		},
+		"boxed": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

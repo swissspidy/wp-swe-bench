@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/notice-box",
+	"version": "2.0.0",
+	"title": "Notice box",
+	"category": "text",
+	"icon": "info-outline",
+	"description": "A coloured box for tips, warnings and errors.",
+	"keywords": [ "notice", "alert", "tip", "warning" ],
+	"textdomain": "acme-content-blocks",
+	"attributes": {
+		"tone": {
+			"type": "string",
+			"default": "info"
+		},
+		"showIcon": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"color": {
+			"background": true,
+			"text": true,
+			"link": false
+		},
+		"spacing": {
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"styles": [
+		{ "name": "default", "label": "Default", "isDefault": true },
+		{ "name": "outlined", "label": "Outlined" }
+	],
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

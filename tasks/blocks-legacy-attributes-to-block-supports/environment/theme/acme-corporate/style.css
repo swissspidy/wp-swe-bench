@@ -1,0 +1,78 @@
+/*
+Theme Name: Acme Corporate
+Theme URI: https://acme.example.com/
+Author: Acme Design Team
+Description: Corporate theme for the Acme sites. Design tokens live in theme.json.
+Version: 3.2.0
+Requires at least: 6.6
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+Text Domain: acme-corporate
+*/
+
+body {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--body, system-ui, sans-serif);
+}
+
+.site {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 2rem 1rem;
+}
+
+.site-header,
+.site-footer {
+	padding: 1rem 0;
+	border-bottom: 1px solid var(--wp--preset--color--mist);
+}
+
+/* --- Acme Content Blocks ------------------------------------------------ */
+
+.wp-block-acme-notice-box {
+	display: flex;
+	gap: 0.75rem;
+	border-radius: 4px;
+}
+
+.wp-block-acme-notice-box__icon::before {
+	content: "ℹ";
+	font-weight: 700;
+}
+
+.wp-block-acme-notice-box.is-tone-warning .wp-block-acme-notice-box__icon::before {
+	content: "⚠";
+}
+
+.wp-block-acme-notice-box.is-tone-error .wp-block-acme-notice-box__icon::before {
+	content: "✖";
+}
+
+.wp-block-acme-notice-box.is-tone-success .wp-block-acme-notice-box__icon::before {
+	content: "✔";
+}
+
+.wp-block-acme-notice-box__body > :first-child {
+	margin-top: 0;
+}
+
+.wp-block-acme-notice-box__body > :last-child {
+	margin-bottom: 0;
+}
+
+.wp-block-acme-stat {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.1;
+}
+
+.wp-block-acme-stat__label {
+	font-size: var(--wp--preset--font-size--small);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* 1.0 notices */
+.acme-notice {
+	border-left: 4px solid currentColor;
+}

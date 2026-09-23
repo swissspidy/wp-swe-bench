@@ -1,0 +1,23 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme corporate site with Acme Content Blocks 1.6.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activateTheme",
+			"themeFolderName": "acme-corporate"
+		},
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-content-blocks/acme-content-blocks.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Corporate"
+			}
+		}
+	]
+}

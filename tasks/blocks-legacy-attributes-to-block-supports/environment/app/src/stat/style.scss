@@ -1,0 +1,14 @@
+.wp-block-acme-stat {
+	font-weight: 700;
+
+	&.is-boxed {
+		padding: 1.5rem;
+		background: #f3f4f6;
+		border-radius: 8px;
+	}
+}
+
+.wp-block-acme-stat__label {
+	display: block;
+	font-weight: 400;
+}
