@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/contact-form",
+	"version": "2.0.0",
+	"title": "Contact form",
+	"category": "widgets",
+	"icon": "email",
+	"description": "A contact form. Submissions are emailed to the site owner and stored under Contact entries.",
+	"keywords": [ "form", "contact", "email" ],
+	"textdomain": "acme-contact",
+	"attributes": {
+		"formId": { "type": "string", "default": "" },
+		"submitLabel": { "type": "string", "default": "Send" },
+		"successMessage": { "type": "string", "default": "" }
+	},
+	"usesContext": [ "postId" ],
+	"supports": {
+		"html": false,
+		"reusable": false,
+		"align": [ "wide" ],
+		"spacing": { "margin": true, "padding": true }
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

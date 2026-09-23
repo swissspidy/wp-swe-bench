@@ -1,0 +1,6 @@
+.acme-contact__row { display: flex; flex-direction: column; gap: .25rem; margin: 0 0 1rem; }
+.acme-contact__row input, .acme-contact__row select, .acme-contact__row textarea { max-width: 32rem; }
+.acme-contact__notice--success { padding: .75rem 1rem; background: #edfaef; border-left: 4px solid #00a32a; }
+.acme-contact__notice--error { padding: .75rem 1rem 0.75rem 2rem; background: #fcf0f1; border-left: 4px solid #d63638; }
+.acme-contact__counter { font-size: .8em; color: #555; }
+.acme-contact__hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

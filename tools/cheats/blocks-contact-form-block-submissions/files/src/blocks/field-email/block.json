@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/field-email",
+	"version": "2.0.0",
+	"title": "Email field",
+	"category": "widgets",
+	"icon": "email-alt",
+	"description": "An email address field.",
+	"textdomain": "acme-contact",
+	"parent": [
+		"acme/contact-form"
+	],
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false,
+		"inserter": true
+	},
+	"editorScript": "file:./index.js"
+}

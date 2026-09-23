@@ -1,0 +1,49 @@
+.wp-block-acme-contact-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	.acme-contact-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+
+		&--checkbox {
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+
+		&.has-error input,
+		&.has-error select,
+		&.has-error textarea {
+			border-color: #d63638;
+		}
+	}
+
+	.acme-contact-field__error {
+		color: #b32d2e;
+		margin: 0;
+		flex-basis: 100%;
+	}
+
+	.acme-contact-form__errors:not([hidden]) {
+		padding: 0.75rem 1rem;
+		background: #fcf0f1;
+		border-left: 4px solid #d63638;
+	}
+
+	.acme-contact-form__status:not(:empty) {
+		padding: 0.75rem 1rem;
+		background: #edfaef;
+		border-left: 4px solid #00a32a;
+	}
+
+	.acme-contact-form__hp {
+		position: absolute !important;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+}

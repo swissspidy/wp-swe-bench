@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/field-textarea",
+	"version": "2.0.0",
+	"title": "Message field",
+	"category": "widgets",
+	"icon": "text",
+	"description": "A multi-line text field.",
+	"textdomain": "acme-contact",
+	"parent": [
+		"acme/contact-form"
+	],
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false,
+		"inserter": true
+	},
+	"editorScript": "file:./index.js"
+}

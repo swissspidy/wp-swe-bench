@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/field-select",
+	"version": "2.0.0",
+	"title": "Drop-down field",
+	"category": "widgets",
+	"icon": "list-view",
+	"description": "A drop-down with fixed options.",
+	"textdomain": "acme-contact",
+	"parent": [
+		"acme/contact-form"
+	],
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"options": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"default": []
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false,
+		"inserter": true
+	},
+	"editorScript": "file:./index.js"
+}

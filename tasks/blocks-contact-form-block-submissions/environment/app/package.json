@@ -1,0 +1,15 @@
+{
+  "name": "acme-contact",
+  "version": "1.6.2",
+  "private": true,
+  "description": "Contact form for Acme sites.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build src/shortcode/counter.js --output-path=build/shortcode",
+    "start": "wp-scripts start src/shortcode/counter.js --output-path=build/shortcode",
+    "lint:js": "wp-scripts lint-js src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}

@@ -1,0 +1,25 @@
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Support</h2>
+<!-- /wp:heading -->
+
+<!-- wp:acme/contact-form {"formId":"support","successMessage":"Support request received."} -->
+<!-- wp:acme/field-text {"name":"name","label":"Name","required":true} /-->
+
+<!-- wp:acme/field-email {"name":"email","label":"Email","required":true} /-->
+
+<!-- wp:acme/field-textarea {"name":"message","label":"How can we help?","required":true} /-->
+<!-- /wp:acme/contact-form -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Feedback</h2>
+<!-- /wp:heading -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:acme/contact-form {"formId":"feedback","submitLabel":"Send feedback"} -->
+<!-- wp:acme/field-select {"name":"rating","label":"Rating","options":["1","2","3","4","5"]} /-->
+
+<!-- wp:acme/field-textarea {"name":"feedback","label":"Your feedback","required":true} /-->
+
+<!-- wp:acme/field-checkbox {"name":"consent","label":"You may quote me","required":true} /-->
+<!-- /wp:acme/contact-form --></div>
+<!-- /wp:group -->

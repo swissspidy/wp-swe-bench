@@ -1,0 +1,23 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Web Studio site with Acme Contact 1.6.2",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-contact/acme-contact.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Web Studio",
+				"acme_contact_settings": {
+					"recipient": "hello@acme-web.example",
+					"success_message": "Thanks! We will get back to you within one business day."
+				}
+			}
+		}
+	]
+}
