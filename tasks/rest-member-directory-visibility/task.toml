@@ -1,4 +1,8 @@
 schema_version = "1.3"
+
+# Grade in a fresh copy of the pristine task image (separate verifier); only the agent's
+# repository is transferred. node_modules is a symlink to the shared toolchain.
+artifacts = [{ source = "/wordpress/wp-content/plugins/acme-members", exclude = ["node_modules"] }]
 multi_step_reward_strategy = "mean"
 
 [task]
@@ -18,6 +22,7 @@ starting_state = "Acme Members 2.1.0; 22 members with 2.x and 1.x profiles cover
 multi_step = true
 
 [verifier]
+environment_mode = "separate"
 timeout_sec = 1800.0
 
 [agent]

@@ -1,5 +1,9 @@
 schema_version = "1.3"
 
+# Grade in a fresh copy of the pristine task image (separate verifier); only the agent's
+# repository is transferred. node_modules is a symlink to the shared toolchain.
+artifacts = [{ source = "/wordpress/wp-content/plugins/acme-charts", exclude = ["node_modules"] }]
+
 [task]
 name = "wp-swe-bench/blocks-apiv3-iframe-editor-compat"
 description = "Acme Charts: make legacy apiVersion 1/2 chart + legend blocks work in the always-iframed editor (preview drawing, canvas styles, legend toggles, resize, console clean) without changing saved markup, and load front-end assets only where the blocks render."
@@ -17,6 +21,7 @@ starting_state = "Acme Charts 1.6.0 active; posts with 1.0 and 1.6 charts (+ leg
 multi_step = false
 
 [verifier]
+environment_mode = "separate"
 timeout_sec = 1800.0
 
 [agent]

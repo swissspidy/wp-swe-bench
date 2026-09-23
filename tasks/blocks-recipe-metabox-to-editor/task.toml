@@ -1,5 +1,9 @@
 schema_version = "1.3"
 
+# Grade in a fresh copy of the pristine task image (separate verifier); only the agent's
+# repository is transferred. node_modules is a symlink to the shared toolchain.
+artifacts = [{ source = "/wordpress/wp-content/plugins/acme-recipes", exclude = ["node_modules"] }]
+
 [task]
 name = "wp-swe-bench/blocks-recipe-metabox-to-editor"
 description = "Acme Recipes 2.0: replace the classic recipe details meta box with a block editor document panel, expose the meta in REST with schema/permissions/private fields and legacy normalization, and add a dynamic Recipe card block without double cards."
@@ -17,6 +21,7 @@ starting_state = "Acme Recipes 1.6.0; recipes in current format, 1.x format (str
 multi_step = false
 
 [verifier]
+environment_mode = "separate"
 timeout_sec = 1500.0
 
 [agent]

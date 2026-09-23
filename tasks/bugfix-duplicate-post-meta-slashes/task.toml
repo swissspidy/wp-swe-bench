@@ -1,5 +1,9 @@
 schema_version = "1.3"
 
+# Grade in a fresh copy of the pristine task image (separate verifier); only the agent's
+# repository is transferred. node_modules is a symlink to the shared toolchain.
+artifacts = [{ source = "/wordpress/wp-content/plugins/duplicate-post", exclude = ["node_modules"] }]
+
 [task]
 name = "wp-swe-bench/bugfix-duplicate-post-meta-slashes"
 description = "Yoast Duplicate Post (maintained fork of 4.7): copies and Rewrite & Republish corrupt backslashes in custom fields and block markup, and lose custom taxonomy terms of late-registered post types."
@@ -17,6 +21,7 @@ starting_state = "Duplicate Post active, enabled for post/page/acme_recipe/acme_
 multi_step = false
 
 [verifier]
+environment_mode = "separate"
 timeout_sec = 1500.0
 
 [agent]

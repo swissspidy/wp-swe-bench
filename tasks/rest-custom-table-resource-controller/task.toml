@@ -1,5 +1,9 @@
 schema_version = "1.3"
 
+# Grade in a fresh copy of the pristine task image (separate verifier); only the agent's
+# repository is transferred. node_modules is a symlink to the shared toolchain.
+artifacts = [{ source = "/wordpress/wp-content/plugins/acme-leads", exclude = ["node_modules"] }]
+
 [task]
 name = "wp-swe-bench/rest-custom-table-resource-controller"
 description = "Acme Leads: fix the SQL injection in the v1 leads route and build a v2 REST resource over the custom leads table with schema, filters, search, whitelisted sorting, tamper-proof keyset cursor pagination, ETag/If-None-Match, column-level _fields, owner-scoped access and a single-query bulk status endpoint that keeps the existing status hook."
@@ -17,6 +21,7 @@ starting_state = "Acme Leads 1.8.0; 2000 seeded leads (duplicate timestamps, sco
 multi_step = false
 
 [verifier]
+environment_mode = "separate"
 timeout_sec = 1500.0
 
 [agent]
