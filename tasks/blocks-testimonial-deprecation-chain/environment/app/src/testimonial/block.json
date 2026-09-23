@@ -1,0 +1,61 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/testimonial",
+	"version": "3.2.0",
+	"title": "Testimonial",
+	"category": "text",
+	"icon": "format-quote",
+	"description": "A customer quote with the customer's name, role, photo and rating.",
+	"keywords": [ "review", "quote", "customer", "rating" ],
+	"textdomain": "acme-testimonials",
+	"attributes": {
+		"quote": {
+			"type": "string",
+			"source": "html",
+			"selector": ".acme-testimonial__quote p"
+		},
+		"authorName": {
+			"type": "string",
+			"source": "html",
+			"selector": ".acme-testimonial__name"
+		},
+		"authorRole": {
+			"type": "string",
+			"source": "html",
+			"selector": ".acme-testimonial__role"
+		},
+		"rating": {
+			"type": "number",
+			"default": 0
+		},
+		"avatarId": {
+			"type": "number"
+		},
+		"avatarUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".acme-testimonial__avatar",
+			"attribute": "src"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "left", "right", "wide" ]
+	},
+	"styles": [
+		{ "name": "default", "label": "Default", "isDefault": true },
+		{ "name": "card", "label": "Card" }
+	],
+	"example": {
+		"attributes": {
+			"quote": "The best decision we made this year.",
+			"authorName": "Jane Doe",
+			"authorRole": "CTO, Initech",
+			"rating": 5
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

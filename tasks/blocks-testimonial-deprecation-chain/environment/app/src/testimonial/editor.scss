@@ -1,0 +1,10 @@
+/**
+ * Editor-only tweaks.
+ */
+
+.wp-block-acme-testimonial {
+	.acme-testimonial__role:empty::before,
+	.acme-testimonial__role [data-rich-text-placeholder] {
+		content: none;
+	}
+}

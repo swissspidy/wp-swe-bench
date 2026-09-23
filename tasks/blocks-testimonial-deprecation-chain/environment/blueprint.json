@@ -1,0 +1,20 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Software marketing site with Acme Testimonials 3.2.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-testimonials/acme-testimonials.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Software",
+				"uploads_use_yearmonth_folders": "0"
+			}
+		}
+	]
+}
