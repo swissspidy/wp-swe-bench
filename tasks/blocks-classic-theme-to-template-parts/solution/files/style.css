@@ -1,0 +1,172 @@
+/*
+Theme Name: Acme Corporate
+Theme URI: https://acme-corp.example/
+Author: Acme Corporation Web Team
+Description: Corporate theme for acme-corp.example. Classic PHP templates with theme.json-based block styles.
+Version: 4.0.0
+Requires at least: 6.5
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+Text Domain: acme-corporate
+*/
+
+/* Layout ------------------------------------------------------------------ */
+
+body {
+	margin: 0;
+	background: var(--wp--preset--color--base, #fff);
+	color: var(--wp--preset--color--contrast, #1b1f24);
+	font-family: var(--wp--preset--font-family--body, system-ui, sans-serif);
+	line-height: 1.6;
+}
+
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	white-space: nowrap;
+}
+
+.skip-link:focus {
+	position: fixed !important;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 100000;
+	width: auto;
+	height: auto;
+	padding: 0.75rem 1rem;
+	clip: auto;
+	background: #fff;
+}
+
+.site-main,
+.site-header__inner,
+.site-footer__inner {
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+/* Header ------------------------------------------------------------------ */
+
+.site-header {
+	border-bottom: 1px solid #e3e7ec;
+}
+
+.site-header__inner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.site-title {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.site-title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.site-description {
+	margin: 0;
+	color: #5b6570;
+	font-size: 0.9rem;
+}
+
+.main-navigation ul {
+	display: flex;
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.main-navigation .sub-menu {
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	padding: 0.5rem 1rem;
+	background: #fff;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.main-navigation li:hover > .sub-menu,
+.main-navigation li:focus-within > .sub-menu {
+	display: flex;
+}
+
+.header-cta {
+	display: inline-block;
+	padding: 0.6rem 1.2rem;
+	border-radius: 4px;
+	background: var(--wp--preset--color--primary, #0b5cad);
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu-toggle {
+	display: none;
+}
+
+@media (max-width: 782px) {
+	.menu-toggle {
+		display: inline-block;
+	}
+
+	.main-navigation:not(.toggled) ul {
+		display: none;
+	}
+}
+
+/* Footer ------------------------------------------------------------------ */
+
+.site-footer {
+	margin-top: 4rem;
+	padding: 3rem 0 2rem;
+	background: var(--wp--preset--color--contrast, #1b1f24);
+	color: #e7ebef;
+}
+
+.site-footer a {
+	color: #fff;
+}
+
+.site-footer__inner {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 2rem;
+}
+
+.footer-navigation ul,
+.social-links {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.social-links {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.social-link svg {
+	width: 22px;
+	height: 22px;
+	fill: currentColor;
+}
+
+.site-info {
+	grid-column: 1 / -1;
+	font-size: 0.85rem;
+	opacity: 0.8;
+}

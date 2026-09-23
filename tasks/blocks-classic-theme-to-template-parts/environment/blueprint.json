@@ -1,0 +1,20 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "acme-corp.example on the Acme Corporate 3.4.1 classic theme",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activateTheme",
+			"themeFolderName": "acme-corporate"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Corporation",
+				"blogdescription": "Engineering since 1953"
+			}
+		}
+	]
+}

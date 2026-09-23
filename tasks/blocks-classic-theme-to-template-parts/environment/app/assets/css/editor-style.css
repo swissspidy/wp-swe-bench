@@ -1,0 +1,5 @@
+/* Editor styles: match the front-end content width and typography. */
+body {
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	line-height: 1.6;
+}

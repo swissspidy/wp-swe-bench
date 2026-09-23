@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/blocks-classic-theme-to-template-parts"
+description = "Acme Corporate 4.0: turn a classic theme's PHP header/footer into Site Editor template parts (hybrid theme) that keep showing each site's menus, widgets and Customizer data; move patterns to /patterns; create a synced pattern once."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "classic-theme", "hybrid-theme", "template-parts", "site-editor", "navigation", "block-patterns", "customizer"]
+
+[metadata]
+category = "blocks"
+tags = ["block-template-parts", "hybrid-theme", "navigation-block", "classic-menus", "theme-patterns", "synced-patterns", "customizer-migration", "legacy-theme-mods"]
+difficulty = "hard"
+estimated_human_hours = 6
+source = "original"
+repo = "acme-corporate (custom classic theme, ~1200 LOC)"
+starting_state = "Acme Corporate 3.4.1 active; pages embedding theme patterns by slug, Primary (with submenu) and Footer menus, footer text widget, Customizer settings incl. 2.x leftovers (legacy twitter URL, unsafe javascript: YouTube URL)"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
