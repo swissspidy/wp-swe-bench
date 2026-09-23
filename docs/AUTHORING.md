@@ -216,13 +216,20 @@ WORKDIR /wordpress/wp-content/plugins/acme-callouts
   use the shared toolchain: `wpsb-provision` symlinks `/opt/wpsb/node/node_modules`
   into `$WPSB_REPO` (keep `@wordpress/scripts` in `devDependencies` for realism).
   If PHP dependencies are needed, write them yourself as part of the codebase.
-- The agent runs as root in the container. The verifier restores the DB from the
-  pristine snapshot and re-checks core integrity, so tampering doesn't help.
+- The agent runs as root in the container. Grading uses a **separate verifier**: a fresh
+  container from the same task image into which only `$WPSB_REPO` is copied. So the solution must
+  live entirely in the repository (anything the agent changes elsewhere, including the database,
+  is discarded), and `test.sh` must not depend on agent-side state outside the repo.
+  `tools/validate.py` emulates this; `tools/retest.sh` runs in the kept agent container (faster, less
+  faithful).
 
 ### task.toml (copy + adapt)
 
 ```toml
 schema_version = "1.3"
+
+# The agent's repository is the only thing transferred to the (separate) verifier.
+artifacts = [{ source = "/wordpress/wp-content/plugins/<slug>", exclude = ["node_modules"] }]
 
 [task]
 name = "wp-swe-bench/<task-id>"
@@ -241,6 +248,7 @@ starting_state = "<what is seeded>"
 multi_step = false
 
 [verifier]
+environment_mode = "separate"   # grade in a fresh copy of the pristine task image
 timeout_sec = 1500.0
 
 [agent]

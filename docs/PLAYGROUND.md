@@ -69,8 +69,6 @@ with `wp-playground-cli run-blueprint` against the same directory, then an optio
    multisite task behaves the same in both runtimes before relying on it.
 9. **Blueprint steps that need the network at runtime** (e.g. `wp-cli`, `installPlugin` from a URL)
    only run at image build time, which is fine; the verifier never re-runs the blueprint.
-10. **The agent runs as root** in the container (Harbor default). The verifier restores the DB from
-    the pristine snapshot, verifies WordPress core + the SQLite drop-in against checksums shipped
-    with the tests, and uses the tests' own vendored copy of the grading library. The pristine
-    snapshot and the toolchain in `/opt/wpsb` could still be tampered with by a malicious agent; this
-    is a known, accepted limitation (see docs/CONTAMINATION.md).
+10. **The agent runs as root** in the container (Harbor default). Grading happens in a separate
+    verifier container built from the pristine task image; only the agent's repository is
+    transferred (see docs/CONTAMINATION.md).
