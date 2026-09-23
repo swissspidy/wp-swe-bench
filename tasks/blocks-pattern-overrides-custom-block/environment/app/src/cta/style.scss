@@ -1,0 +1,55 @@
+.wp-block-acme-cta {
+	padding: 2rem;
+	border-radius: 6px;
+	text-align: center;
+
+	&.is-variant-primary {
+		background: #1d4ed8;
+		color: #fff;
+	}
+
+	&.is-variant-secondary {
+		background: #ecfdf5;
+		color: #065f46;
+	}
+
+	&.is-variant-dark {
+		background: #111827;
+		color: #f9fafb;
+	}
+
+	.wp-block-acme-cta__heading {
+		margin: 0 0 1rem;
+	}
+
+	.wp-block-acme-cta__button {
+		display: inline-block;
+		padding: 0.75rem 1.5rem;
+		border-radius: 999px;
+		background: #fff;
+		color: #111827;
+		text-decoration: none;
+		font-weight: 600;
+	}
+}
+
+/* 1.x markup, kept until all old CTAs are gone. */
+.acme-cta {
+	padding: 2rem;
+	text-align: center;
+
+	&--blue {
+		background: #1d4ed8;
+		color: #fff;
+	}
+
+	&--green {
+		background: #ecfdf5;
+	}
+
+	&__button {
+		display: inline-block;
+		padding: 0.75rem 1.5rem;
+		background: #fff;
+	}
+}

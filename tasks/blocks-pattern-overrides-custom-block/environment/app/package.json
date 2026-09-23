@@ -1,0 +1,15 @@
+{
+  "name": "acme-cta",
+  "version": "2.3.0",
+  "private": true,
+  "description": "Call-to-action block for the Acme sites.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme marketing site with Acme Call to Action 2.3.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "activatePlugin",
+			"pluginPath": "acme-cta/acme-cta.php"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Marketing",
+				"acme_cta_tracking": {
+					"enabled": true,
+					"utm_source": "acme-blog",
+					"utm_medium": "cta"
+				}
+			}
+		}
+	]
+}

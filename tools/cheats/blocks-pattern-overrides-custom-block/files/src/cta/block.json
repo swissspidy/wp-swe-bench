@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acme/cta",
+	"version": "2.3.0",
+	"title": "Call to action",
+	"category": "design",
+	"icon": "megaphone",
+	"description": "A heading and a button that sends visitors somewhere.",
+	"keywords": [
+		"cta",
+		"button",
+		"banner",
+		"promo"
+	],
+	"textdomain": "acme-cta",
+	"attributes": {
+		"heading": {
+			"type": "string",
+			"default": "",
+			"source": "rich-text",
+			"selector": "h2,h3,h4",
+			"role": "content"
+		},
+		"headingLevel": {
+			"type": "number",
+			"default": 2
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "",
+			"source": "rich-text",
+			"selector": "a",
+			"role": "content"
+		},
+		"buttonUrl": {
+			"type": "string",
+			"default": "",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href",
+			"role": "content"
+		},
+		"variant": {
+			"type": "string",
+			"default": "primary"
+		},
+		"opensInNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"campaign": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [
+			"wide",
+			"full"
+		]
+	},
+	"example": {
+		"attributes": {
+			"heading": "Join 20,000 readers",
+			"buttonText": "Subscribe",
+			"buttonUrl": "https://example.com/subscribe"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

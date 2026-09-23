@@ -1,0 +1,29 @@
+schema_version = "1.3"
+
+[task]
+name = "wp-swe-bench/blocks-pattern-overrides-custom-block"
+description = "Acme Call to Action 2.4: make the custom acme/cta block overridable in synced patterns (editor + server rendering), with tracking of the displayed link, untrusted-override sanitization and 1.x back-compat."
+authors = [{ name = "wp-swe-bench" }]
+keywords = ["wordpress", "gutenberg", "blocks", "synced-patterns", "pattern-overrides", "block-bindings", "dynamic-block", "escaping"]
+
+[metadata]
+category = "blocks"
+tags = ["pattern-overrides", "block-bindings", "server-side-render", "block-deprecation", "escaping", "url-sanitization", "build-step"]
+difficulty = "hard"
+estimated_human_hours = 4
+source = "original"
+repo = "acme-cta (custom plugin, ~1000 LOC)"
+starting_state = "Acme Call to Action 2.3.0 active with tracking on; synced patterns with hand-added override settings on CTAs, pages with per-instance overrides (incl. hostile imported values), standalone 2.x and 1.x CTAs"
+multi_step = false
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
