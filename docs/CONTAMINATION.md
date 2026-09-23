@@ -26,7 +26,8 @@
 The agent is root inside its container, so grading never trusts that container:
 
 - **Separate verifier.** Every task sets `[verifier] environment_mode = "separate"`. Harbor grades in a
-  **fresh container from the pristine task image**. Only the agent's repository (`$WPSB_REPO`,
+  **fresh container from the pristine task image** (plus the hidden tests, baked into the verifier
+  image by the generated `tests/Dockerfile`, so they never exist in the agent's container). Only the agent's repository (`$WPSB_REPO`,
   declared as the task's `artifacts`, minus the `node_modules` symlink) is transferred, and Harbor
   empties the target directory before uploading it, so deleted files stay deleted. Everything else
   the agent could touch (WordPress core, the database and its pristine snapshot, `/opt/wpsb` with

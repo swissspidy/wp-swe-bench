@@ -1,0 +1,70 @@
+name: Images
+
+# Builds and publishes the base image and every task image to GHCR.
+# Task images are referenced by each task's [environment].docker_image, so Harbor (and cloud
+# sandboxes) pull them instead of building, and the separate verifier gets the same pristine image.
+on:
+  push:
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  base:
+    runs-on: ubuntu-latest
+    outputs:
+      tasks: ${{ steps.tasks.outputs.list }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Read version
+        id: v
+        run: echo "version=$(cat base/VERSION)" >> "$GITHUB_OUTPUT"
+      - name: List tasks
+        id: tasks
+        run: echo "list=$(ls -d tasks/*/ | xargs -n1 basename | jq -R . | jq -sc .)" >> "$GITHUB_OUTPUT"
+      - name: Build and push base image
+        uses: docker/build-push-action@v6
+        with:
+          context: base
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/wp-swe-bench-base:${{ steps.v.outputs.version }}
+
+  task:
+    needs: base
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        task: ${{ fromJson(needs.base.outputs.tasks) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Resolve image names
+        id: v
+        run: |
+          echo "base=ghcr.io/${{ github.repository_owner }}/wp-swe-bench-base:$(cat base/VERSION)" >> "$GITHUB_OUTPUT"
+          echo "image=$(python3 -c 'import sys,tomllib; print(tomllib.load(open(sys.argv[1],"rb"))["environment"]["docker_image"])' tasks/${{ matrix.task }}/task.toml)" >> "$GITHUB_OUTPUT"
+      - name: Build and push task image
+        uses: docker/build-push-action@v6
+        with:
+          context: tasks/${{ matrix.task }}/environment
+          build-args: WPSB_BASE_IMAGE=${{ steps.v.outputs.base }}
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.v.outputs.image }}
