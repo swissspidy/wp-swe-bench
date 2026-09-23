@@ -312,6 +312,7 @@ with the task's plugins active. Test files are `*Test.php`; optional
 - An in-process REST **autosave** defines `DOING_AUTOSAVE` for the rest of the PHPUnit process
   (later revisions silently stop being saved); do autosaves over HTTP. `http()` doesn't follow redirects unless `'follow' => true`.
 - `get_posts()` by `name` can't find drafts without a logged-in user; query `$wpdb` in helpers.
+- Don't name helper methods `count()` in test classes (PHPUnit's `TestCase::count()` is final).
 - `count_queries( fn )` → `count`, `queries`, `result` (performance tasks).
 - `mails()` / `clear_mails()` read captured outgoing mail.
 - `assertNoDoingItWrong()` fails on `_doing_it_wrong()`/deprecation notices.
