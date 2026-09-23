@@ -1,0 +1,15 @@
+{
+  "name": "acme-seo",
+  "version": "2.0.0",
+  "private": true,
+  "description": "SEO for Acme sites.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build src/editor/index.js --output-path=build/editor && wp-scripts build src/settings/index.js --output-path=build/settings",
+    "start": "wp-scripts start src/settings/index.js --output-path=build/settings",
+    "lint:js": "wp-scripts lint-js src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "35.0.0"
+  }
+}
