@@ -5,8 +5,8 @@ Usage: tools/report.py <jobs-dir>/<job> [--label "Agent / model / options"] [--p
 
 Infrastructure failures (agent crashed or could not start, API errors, environment errors) are
 reported separately and excluded from the pass rate; timeouts count as failures (the agent had
-its full budget). Multi-step tasks score the mean of their steps. A job with several agents or
-models gets one section per agent/model. Unfinished jobs are refused unless --partial is given,
+its full budget). Multi-step tasks score the mean of their steps. A job with several agent
+configurations (agent, model or option values) gets one section per configuration. Unfinished jobs are refused unless --partial is given,
 in which case the report is marked as partial.
 """
 from __future__ import annotations
@@ -33,7 +33,7 @@ def task_meta(task_id: str) -> dict:
 
 def load_trial(path: str) -> dict:
     """Read one trial's result.json into the fields the report needs."""
-    d = json.load(open(path))
+    d = json.load(open(path, encoding="utf-8"))
     tid = d["task_name"].split("/")[-1]
     exc = (d.get("exception_info") or {}).get("exception_type") or ""
     steps = d.get("step_results") or []
@@ -53,6 +53,7 @@ def load_trial(path: str) -> dict:
         return sum(vals) if vals else None
 
     agent = (d.get("config") or {}).get("agent") or {}
+    kwargs = agent.get("kwargs") or {}
     return {
         "task": tid,
         "reward": ((d.get("verifier_result") or {}).get("rewards") or {}).get("reward"),
@@ -62,10 +63,13 @@ def load_trial(path: str) -> dict:
         "cost": total("cost_usd"),
         "tokens_in": total("n_input_tokens"),
         "tokens_out": total("n_output_tokens"),
-        "agent": agent.get("name") or "?",
+        "agent": agent.get("name") or agent.get("import_path") or "?",
         "model": agent.get("model_name") or "",
         # Option names only: values can be anything (including credentials) and reports are published.
-        "options": sorted(k for k, v in (agent.get("kwargs") or {}).items() if v is not None),
+        "options": sorted(k for k, v in kwargs.items() if v is not None),
+        # Full configuration identity, used only for grouping (never printed).
+        "config": json.dumps({"name": agent.get("name"), "import_path": agent.get("import_path"),
+                              "model": agent.get("model_name"), "kwargs": kwargs}, sort_keys=True, default=str),
         "meta": task_meta(tid),
     }
 
@@ -75,7 +79,7 @@ def job_status(job: str, n_found: int) -> str | None:
     p = os.path.join(job, "result.json")
     if not os.path.exists(p):
         return "the job has no result.json (it never started or was killed early)"
-    d = json.load(open(p))
+    d = json.load(open(p, encoding="utf-8"))
     stats = d.get("stats") or {}
     expected = d.get("n_total_trials")
     unfinished = (stats.get("n_running_trials") or 0) + (stats.get("n_pending_trials") or 0)
@@ -140,15 +144,22 @@ def main():
     if partial and not args.partial:
         raise SystemExit(f"job is not finished: {partial}. Resume it, or pass --partial to report it anyway.")
 
-    groups: dict[tuple, list] = {}
+    # Group by the full agent configuration (name/import path, model and option values), so runs
+    # that differ only in an option value (e.g. reasoning effort) are never combined.
+    groups: dict[str, list] = {}
     for t in trials:
-        groups.setdefault((t["agent"], t["model"], tuple(t["options"])), []).append(t)
+        groups.setdefault(t["config"], []).append(t)
     if args.label and len(groups) > 1:
-        print("note: --label ignored, the job has several agents/models/options", file=sys.stderr)
+        print("note: --label ignored, the job has several agent configurations", file=sys.stderr)
     job_name = os.path.basename(os.path.normpath(args.job))
+    labels = [" / ".join(x for x in (ts[0]["agent"], ts[0]["model"]) if x) for ts in groups.values()]
     out: list[str] = []
-    for (agent, model, _), ts in groups.items():
-        label = args.label if len(groups) == 1 and args.label else " / ".join(x for x in (agent, model) if x)
+    for i, (ts, label) in enumerate(zip(groups.values(), labels), 1):
+        if len(groups) == 1 and args.label:
+            label = args.label
+        elif labels.count(label) > 1:
+            # Same agent/model with different option values: an opaque id, values stay private.
+            label += f" (configuration {i})"
         out += render(ts, label, job_name, partial) + [""]
     print("\n".join(out).rstrip())
 
