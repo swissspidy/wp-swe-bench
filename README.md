@@ -80,8 +80,14 @@ To summarize a finished job as Markdown (pass rate overall and per category, per
 the failing checks, cost/tokens when the agent reports them):
 
 ```bash
-python3 tools/report.py <jobs-dir>/<job> > results/<date>-<agent>-<model>.md
+python3 tools/report.py <jobs-dir>/<job> --label "<agent> / <model> (<options, e.g. reasoning_effort=high>)" \
+  > results/<date>-<agent>-<model>.md
+python3 tools/report.py <jobs-dir>/<job> --partial   # progress check on a job that is still running
 ```
+
+The report lists the names of agent options but not their values (they could be credentials), so put
+the settings that matter for comparison into `--label`. Unfinished jobs are refused unless
+`--partial` is given; a job with several agents or models gets one section each.
 
 Trials that failed for infrastructure reasons (agent crashed or could not start, API errors) are
 listed but excluded from the pass rate; re-run them with `harbor jobs resume -p <job> -f <ErrorType>`.
