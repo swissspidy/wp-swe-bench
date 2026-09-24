@@ -76,6 +76,17 @@ verifier container, so keep `-n` at about (CPU cores ÷ 4).
 Tasks need no network at runtime. Recommended resources per trial: 4 CPUs, 8 GB RAM (declared in
 each `task.toml`). Verification takes ~3–10 minutes per task (Playground + Chromium).
 
+To summarize a finished job as Markdown (pass rate overall and per category, per-task rewards with
+the failing checks, cost/tokens when the agent reports them):
+
+```bash
+python3 tools/report.py <jobs-dir>/<job> > results/<date>-<agent>-<model>.md
+```
+
+Trials that failed for infrastructure reasons (agent crashed or could not start, API errors) are
+listed but excluded from the pass rate; re-run them with `harbor jobs resume -p <job> -f <ErrorType>`.
+Agent timeouts count as failures.
+
 `reward.json` contains the binary `reward` (1 iff every required check passed) plus diagnostic
 sub-scores per check (e.g. `phpunit`, `e2e`, `build`, `integrity`, `no_fatals` and the soft `wpcs`
 score) and `required_passed` / `required_total`.
