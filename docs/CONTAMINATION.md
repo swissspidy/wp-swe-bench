@@ -23,17 +23,19 @@
 
 ## In-container tampering
 
-The agent is root inside its container. Mitigations:
-- The verifier uses its **own vendored copy** of the grading library (`tests/wpsb/`), not files from
-  the image.
-- It verifies **WordPress core + the SQLite drop-in** against an md5 manifest shipped with the tests
-  (`wpsb_integrity`), so patching core to make tests pass fails the task.
-- It **restores the pristine database** (captured at image build) before grading, so agent-side DB
-  edits don't carry over. Legacy content must be handled by the code, as it would be in production.
-- JS is **rebuilt from source** by the verifier; committed build output is ignored.
+The agent is root inside its container, so grading never trusts that container:
 
-Known limitations: the pristine snapshot (`/opt/wpsb/pristine`) and the toolchain in `/opt/wpsb`
-(PHPUnit, Playwright, Node) live in the image and could be tampered with by a deliberately malicious
-agent. A separate verifier environment (Harbor `[verifier].environment_mode = "separate"`) with
-artifacts would close this gap at the cost of shipping the agent's repo as an artifact; this is
-a possible future hardening.
+- **Separate verifier.** Every task sets `[verifier] environment_mode = "separate"`. Harbor grades in a
+  **fresh container from the pristine task image** (plus the hidden tests, baked into the verifier
+  image by the generated `tests/Dockerfile`, so they never exist in the agent's container). Only the agent's repository (`$WPSB_REPO`,
+  declared as the task's `artifacts`, minus the `node_modules` symlink) is transferred, and Harbor
+  empties the target directory before uploading it, so deleted files stay deleted. Everything else
+  the agent could touch (WordPress core, the database and its pristine snapshot, `/opt/wpsb` with
+  PHPUnit/Playwright/Node, mu-plugins, `wp-config.php`) comes from the untouched image.
+- The verifier also uses its **own vendored copy** of the grading library (`tests/wpsb/`), verifies
+  **WordPress core + the SQLite drop-in** against an md5 manifest (`wpsb_integrity`), **restores the
+  pristine database** before grading, and **rebuilds JS from source**.
+
+What remains possible: code inside the agent's own plugin/theme runs during grading, so a
+deliberately adversarial solution could try to detect the test harness. Reviewing trajectories of
+high-scoring runs is the mitigation.

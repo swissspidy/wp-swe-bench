@@ -3,9 +3,11 @@
 
 Direct Docker mode (default) replicates Harbor's trial semantics without Harbor:
   build image -> start container (--network none) -> [solution to /solution, run solve.sh]
-  -> upload tests/ to /tests -> run tests/test.sh -> read /logs/verifier/reward.json
-Multi-step tasks run every step in one container, copying steps/<s>/workdir into the
-working directory (+ setup.sh), overlaying steps/<s>/tests on the shared tests/.
+  -> grade -> read /logs/verifier/reward.json
+Grading uses Harbor's separate verifier: a fresh container from the verifier image built from
+tests/ (or steps/<s>/tests/) with the task image as base, plus the agent's repository artifact.
+Multi-step tasks run every step in one agent container, copying steps/<s>/workdir into the
+working directory (+ setup.sh).
 
 Harbor mode (--harbor) shells out to `harbor run -p <task> -a oracle|nop` instead.
 
@@ -21,6 +23,7 @@ import contextlib
 import fcntl
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -88,7 +91,7 @@ def steps_of(cfg: dict) -> list[str]:
 
 
 def build_image(task_id: str, task_dir: Path) -> str:
-    tag = f"wpsb-task/{task_id}:latest"
+    tag = load_toml(task_dir).get("environment", {}).get("docker_image") or f"wpsb-task/{task_id}:latest"
     args = ["docker", "build", "--network", "host", "--build-arg", f"WPSB_BASE_IMAGE={BASE_IMAGE}", "-t", tag, str(task_dir / "environment")]
     for v in ("HTTPS_PROXY", "https_proxy", "NO_PROXY", "no_proxy"):
         if os.environ.get(v):
@@ -139,6 +142,29 @@ class Container:
 
     def remove(self):
         sh(["docker", "rm", "-f", self.name], check=False)
+
+
+def build_verifier_image(task_id: str, task_dir: Path, step: str | None, tag: str) -> str:
+    """Build the verifier image the way Harbor does: from the step's tests/ (else the task's tests/),
+    whose generated Dockerfile (tools/sync-lib.sh) bakes the tests into the task image."""
+    ctx = task_dir / "steps" / step / "tests" if step and (task_dir / "steps" / step / "tests").exists() else task_dir / "tests"
+    vtag = f"wpsb-verifier/{task_id}:{step or 'task'}"
+    r = sh(["docker", "build", "--build-arg", f"WPSB_TASK_IMAGE={tag}", "-t", vtag, str(ctx)], check=False, timeout=1800)
+    if r.returncode != 0:
+        raise RuntimeError(f"verifier image build failed ({ctx}):\n{(r.stderr or '')[-3000:]}")
+    return vtag
+
+
+def separate_verifier(cfg: dict) -> bool:
+    ver = cfg.get("verifier", {})
+    return ver.get("environment_mode") == "separate" or "environment" in ver
+
+
+def artifact_dirs(cfg: dict) -> list[dict]:
+    out = []
+    for a in cfg.get("artifacts", []):
+        out.append({"source": a, "exclude": []} if isinstance(a, str) else {"source": a["source"], "exclude": a.get("exclude", [])})
+    return out
 
 
 def merged_tests(task_dir: Path, step: str | None) -> Path:
@@ -205,12 +231,35 @@ def run_trial(task_id: str, task_dir: Path, tag: str, mode: str, keep: bool, net
                         if len(parts) == 3 and parts[0].isdigit():
                             files += 1; added += int(parts[0]); deleted += int(parts[1])
                     out.setdefault("solution_stats", {})[label] = {"files": files, "added": added, "deleted": deleted}
-            tests = merged_tests(task_dir, step)
-            c.put(tests, "/tests")
-            shutil.rmtree(tests, ignore_errors=True)
-            r = c.exec("bash /tests/test.sh", verifier_timeout + 120, workdir=wd, env=cfg.get("verifier", {}).get("env"))
-            reward_raw = c.read("/logs/verifier/reward.json")
-            c.fetch_dir("/logs/verifier", logs_root / label)
+            # Separate verifier (Harbor [verifier].environment_mode = "separate"): grade in a fresh
+            # container from the verifier image (task image + baked-in tests, never uploaded); only
+            # the declared artifacts (the agent's repository) are transferred, replacing the pristine
+            # copy (Harbor empties the target directory before uploading a directory artifact).
+            v = c
+            if separate_verifier(cfg):
+                v = Container(build_verifier_image(task_id, task_dir, step, tag), f"{name}-verifier", network)
+                v.exec("mkdir -p /logs/verifier", 60)
+                for art in artifact_dirs(cfg):
+                    excl = " ".join(f"--exclude={shlex.quote(e)}" for e in art.get("exclude", []))
+                    pack = subprocess.run(["docker", "exec", name, "bash", "-c", f"tar -C {shlex.quote(art['source'])} {excl} -cf - ."],
+                                          capture_output=True, check=False)
+                    if pack.returncode != 0:
+                        raise RuntimeError(f"{label}: collecting artifact {art['source']} failed: {pack.stderr[-2000:]!r}")
+                    src = shlex.quote(art["source"])
+                    unpack = subprocess.run(["docker", "exec", "-i", v.name, "bash", "-c",
+                                             f"rm -rf {src} && mkdir -p {src} && tar -C {src} -xf -"],
+                                            input=pack.stdout, capture_output=True, check=False)
+                    if unpack.returncode != 0:
+                        raise RuntimeError(f"{label}: uploading artifact {art['source']} failed: {unpack.stderr[-2000:]!r}")
+            else:
+                tests = merged_tests(task_dir, step)
+                v.put(tests, "/tests")
+                shutil.rmtree(tests, ignore_errors=True)
+            r = v.exec("bash /tests/test.sh", verifier_timeout + 120, workdir=wd, env=cfg.get("verifier", {}).get("env"))
+            reward_raw = v.read("/logs/verifier/reward.json")
+            v.fetch_dir("/logs/verifier", logs_root / label)
+            if v is not c and not keep:
+                v.remove()
             (logs_root / label).mkdir(parents=True, exist_ok=True)
             (logs_root / label / "test-stdout.txt").write_text((r.stdout or "") + "\n--- stderr ---\n" + (r.stderr or ""))
             try:
