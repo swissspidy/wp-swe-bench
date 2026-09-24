@@ -52,7 +52,7 @@ def slot(task_id: str):
     waited = False
     while True:
         for i in range(SLOTS):
-            f = open(SLOTS_DIR / f"slot-{i}.lock", "w")
+            f = open(SLOTS_DIR / f"slot-{i}.lock", "w", encoding="utf-8")
             try:
                 fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
@@ -307,6 +307,7 @@ def validate(task_id: str, modes: list[str], keep: bool, harbor: bool, network: 
     try:
         cfg = load_toml(task_dir)
         result["metadata"] = cfg.get("metadata", {})
+        tag = None
         if not harbor:
             log(task_id, "building image")
             with slot(task_id):

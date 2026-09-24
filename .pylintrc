@@ -1,0 +1,15 @@
+[MAIN]
+py-version = 3.11
+
+[MESSAGES CONTROL]
+# Only report errors and warnings; the tools are small scripts, so docstring/naming (C) and
+# refactoring (R) checks are mostly noise.
+disable =
+    C,
+    R,
+    # Intentional: top-level handlers record/report any failure (see `# noqa: BLE001`).
+    broad-exception-caught,
+    # `sh()` mirrors subprocess.run's `input=` keyword.
+    redefined-builtin,
+    # Nested helpers that are called immediately inside the loop.
+    cell-var-from-loop,
