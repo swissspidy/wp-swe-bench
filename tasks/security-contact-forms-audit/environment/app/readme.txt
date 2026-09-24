@@ -1,0 +1,49 @@
+=== Acme Forms ===
+Contributors: acmeweb
+Tags: forms, contact form, job applications, csv
+Requires at least: 6.5
+Tested up to: 6.8
+Requires PHP: 7.4
+Stable tag: 2.3.0
+License: GPLv2 or later
+
+Contact and application forms with a submissions inbox, CSV export, file uploads and e-mail notifications.
+
+== Description ==
+
+* Build forms (Acme Forms → All Forms) with text, e-mail, website, paragraph, drop-down and file upload fields, and embed them with `[acme_form id="123"]`.
+* Every submission lands in the **Submissions** inbox (search, filter by form, new/read views, bulk delete).
+* **CSV export** per form, optionally limited to a date range.
+* **E-mail notifications** to the site owner (Acme Forms → Settings).
+* A **dashboard widget** shows the latest submissions to administrators and editors.
+
+Developers:
+
+* `acme_forms_field_types` filter – add field types.
+* `acme_forms_notification_email` filter – change the notification e-mail.
+* `acme_forms_submission_created` / `acme_forms_submission_deleted` / `acme_forms_settings_saved` actions.
+* `acme_forms_admin_menu` action – add screens to the Acme Forms menu.
+* Settings are stored in the `acme_forms_settings` option.
+
+== Changelog ==
+
+= 2.3.0 =
+* Dashboard widget with the latest submissions.
+* Settings: submissions per page.
+
+= 2.2.0 =
+* CSV export can be limited to a date range.
+* Website fields are shown as links.
+
+= 2.1.0 =
+* File upload fields (stored in `wp-content/uploads/acme-forms/`).
+
+= 2.0.0 =
+* Submissions moved to their own database table; field definitions are stored as JSON.
+* Field values are stored exactly as submitted and formatted on display.
+
+= 1.2.0 =
+* Drop-down fields.
+
+= 1.0.0 =
+* Initial release.

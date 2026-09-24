@@ -1,0 +1,9 @@
+.acme-forms-status--new { font-weight: 600; color: #b32d2e; }
+.acme-forms-inbox .column-status { width: 6em; }
+.acme-forms-inbox .column-created_at { width: 14em; }
+.acme-forms-export { max-width: 820px; margin-top: 2em; }
+.acme-forms-submission__fields th { width: 14em; }
+.acme-forms-submission__meta { color: #646970; }
+.acme-forms-widget__list li { display: flex; justify-content: space-between; gap: 1em; }
+.acme-forms-widget__item.is-new strong::after { content: " •"; color: #b32d2e; }
+.acme-forms-widget__date { color: #646970; white-space: nowrap; }

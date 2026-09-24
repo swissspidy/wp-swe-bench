@@ -1,8 +1,9 @@
-# Planned security tasks (not yet authored)
+# Planned security tasks
 
 The plan called for ~5 dedicated `security` tasks. Two exist
-(`security-rest-idor-data-leak`, `security-ssrf-object-injection-embed`). The three below were
-designed but **not authored**: both automated authoring attempts were stopped by a model safety
+(`security-rest-idor-data-leak`, `security-ssrf-object-injection-embed`) from the start. Three more below were
+designed; §1 has since been authored as `tasks/security-contact-forms-audit` (on a retry), §2 and §3
+are still **not authored**. The first two automated authoring attempts were stopped by a model safety
 check while the subagent was designing the deliberately flawed starting plugins, so they are
 written down here for a human author (or a later attempt). Their slots were filled with feature
 tasks that grade security requirements as part of the feature
@@ -22,7 +23,7 @@ escaped output (`&lt;script&gt;` present, no raw tag), unchanged DB state, refus
 
 ---
 
-## 1. `security-contact-forms-audit` (multi-step, 2 steps, very-hard, ~8 h)
+## 1. `security-contact-forms-audit` (multi-step, 2 steps, very-hard, ~8 h) — authored
 
 **Codebase.** "Acme Forms": forms as a CPT (field definitions in post meta), submissions in a custom
 table, a `WP_List_Table` admin screen with search/filters, CSV export with a date-range filter, file

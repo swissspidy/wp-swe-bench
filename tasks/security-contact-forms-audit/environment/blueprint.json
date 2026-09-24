@@ -1,0 +1,16 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Acme Recruiting with Acme Forms 2.3.0",
+		"author": "wp-swe-bench"
+	},
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Acme Recruiting",
+				"admin_email": "admin@example.org"
+			}
+		}
+	]
+}

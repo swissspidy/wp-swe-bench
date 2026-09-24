@@ -1,0 +1,12 @@
+.acme-form__field label { display: block; font-weight: 600; }
+.acme-form__field input[type="text"],
+.acme-form__field input[type="email"],
+.acme-form__field input[type="url"],
+.acme-form__field select,
+.acme-form__field textarea { width: 100%; max-width: 40em; }
+.acme-form__field.has-error input,
+.acme-form__field.has-error textarea,
+.acme-form__field.has-error select { border-color: #b32d2e; }
+.acme-form__hp { position: absolute; left: -9999px; }
+.acme-form__notice--success { color: #1a7f37; }
+.acme-form__notice--error { color: #b32d2e; }
