@@ -85,8 +85,8 @@ python3 tools/validate.py <id> --modes oracle --keep && tools/retest.sh <id> ora
 
 ## Tasks
 
-50 tasks, 8 of them multi-step (2–3 steps each, 17 steps in total); total estimated human
-effort ≈ 300 hours.
+51 tasks, 9 of them multi-step (2–3 steps each, 19 steps in total); total estimated human
+effort ≈ 310 hours.
 
 | Category | Tasks |
 |---|---|
@@ -95,7 +95,7 @@ effort ≈ 300 hours.
 | `plugin-architecture` (multisite lifecycle, versioned migrations, background queues, WP-CLI suites, Settings API, capabilities & roles, privacy tools) | 7 |
 | `bugfix` (incl. a pinned real plugin with a historical upstream bug and one with an injected regression) | 6 |
 | `performance` (N+1, cache invalidation & stampedes, conditional assets, autoload bloat, denormalized queries; measured by query counts) | 5 |
-| `security` (broken access control across all REST paths; SSRF / object injection / XSS) | 2 |
+| `security` (broken access control across all REST paths; SSRF / object injection / XSS; a two-round audit: XSS, CSRF, SQL injection, CSV injection, uploads) | 3 |
 
 Security requirements (capability checks, nonces, escaping, prepared SQL, safe CSV) are also graded
 in many tasks of the other categories.
@@ -103,12 +103,12 @@ in many tasks of the other categories.
 ### Validation status
 
 Every task was validated offline (`docker run --network none`) with `tools/validate.py` against the
-final grading library: the reference solution (**oracle**) scores 1, doing nothing (**nop**) scores 0,
+final grading library, grading in a separate verifier container built like Harbor builds it: the reference solution (**oracle**) scores 1, doing nothing (**nop**) scores 0,
 and a plausible-but-incomplete shortcut (**cheat**, kept in `tools/cheats/`, never shipped) scores 0.
 For multi-step tasks the columns show per-step rewards; a cheat may target a single step (the
 validator runs the oracle for the other steps), and must fail the step it targets. The exemplar
 `blocks-callout-innerblocks-migration` and the multi-step `rest-member-directory-visibility` were
-additionally run through Harbor itself (`harbor run -a oracle`).
+additionally run through Harbor itself (`harbor run -a oracle`, separate verifier).
 
 "Reference diff" is the size of the oracle's change to the agent's repository (excluding build output
 and lockfiles; for multi-step tasks, cumulative after the last step).
@@ -163,6 +163,7 @@ and lockfiles; for multi-step tasks, cumulative after the last step).
 | `rest-relationship-links-embedding` | rest-api | very-hard | 6 | 1 | 7 files, +578/−50 | ✅ 1 | ✅ 0 | ✅ 0 |
 | `rest-settings-endpoint-react-page` | rest-api | very-hard | 7 | 1 | 11 files, +1175/−445 | ✅ 1 | ✅ 0 | ✅ 0 |
 | `rest-webhook-app-passwords-hmac` | rest-api | very-hard | 7 | 1 | 16 files, +1088/−67 | ✅ 1 | ✅ 0 | ✅ 0 |
+| `security-contact-forms-audit` | security | very-hard | 8 | 2 | 19 files, +829/−92 | ✅ 1 | ✅ 0 | ✅ 0/0 |
 | `security-rest-idor-data-leak` | security | very-hard | 6 | 1 | 6 files, +294/−100 | ✅ 1 | ✅ 0 | ✅ 0 |
 | `security-ssrf-object-injection-embed` | security | very-hard | 7 | 1 | 7 files, +359/−47 | ✅ 1 | ✅ 0 | ✅ 0 |
 
