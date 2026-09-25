@@ -1,0 +1,215 @@
+# Dataset manifest for swissspidy/wp-swe-bench
+# Add tasks using: harbor add <org>/<name>
+# Publish using: harbor publish
+
+[dataset]
+name = "swissspidy/wp-swe-bench"
+version = "1.0.0"
+description = ""
+authors = []
+keywords = []
+
+[[tasks]]
+name = "wp-swe-bench/arch-background-import-queue"
+digest = "sha256:10b8e964565bf275d450b4e915a72c14b30749f469ae3fac436bb170f8b4457c"
+
+[[tasks]]
+name = "wp-swe-bench/arch-custom-capabilities-roles-upgrade"
+digest = "sha256:bfa50dd480b332403245dbf4810a2223b32deeb1c160d2f4827aec3b8ad10c6f"
+
+[[tasks]]
+name = "wp-swe-bench/arch-multisite-network-activation"
+digest = "sha256:ec8b48f01abe6c86fad98002f124864db051ce11ef54bbf76c2d1aebabd86dd2"
+
+[[tasks]]
+name = "wp-swe-bench/arch-privacy-export-erase-integration"
+digest = "sha256:7b62c0c303ef7cdd73cdc21fb09ff4b9441b5f3a221cd4b10ee80e18eda10c62"
+
+[[tasks]]
+name = "wp-swe-bench/arch-settings-api-consolidation"
+digest = "sha256:3dfbbcb71847986212db47c6309875a42ff0edfe54b3053d7528cfb562679c35"
+
+[[tasks]]
+name = "wp-swe-bench/arch-versioned-schema-migrations"
+digest = "sha256:da25c217b226d8a770ddf2748cf19f584fc50bdd454e62356f6a674506aa361a"
+
+[[tasks]]
+name = "wp-swe-bench/arch-wpcli-command-suite"
+digest = "sha256:f44d696be48c337b1786c0b701f5e1290508d057fabcc36bd565680f6f749c06"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-accordion-jquery-to-interactivity"
+digest = "sha256:aa54877edc0df7f0272d2da9e0063736b19d9c0ec05ed7d9488991355bf2141a"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-apiv3-iframe-editor-compat"
+digest = "sha256:164edcf2f6e59034c72b5030a06302c5e37fcf49a979f1f2d119e7c6393967e4"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-block-hooks-newsletter"
+digest = "sha256:90fbe0203d27c562ef4330cccaeb4b6c788412ff41d45b37e7546722baf0e702"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-callout-innerblocks-migration"
+digest = "sha256:7848a9a1d17de37d15159f98e918253622f0bf16949a5337809e8d26d392241f"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-classic-theme-to-template-parts"
+digest = "sha256:50b1ab2fbc3cac3fea84e7f6772b2ef41c7b648a804082e9069bb3386b600dc0"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-contact-form-block-submissions"
+digest = "sha256:7ea1c49ab7138c623020cb786468f3660b7cef669d10331ed58b9f539d31faac"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-cpt-block-templates"
+digest = "sha256:5b0ad77bf36114a2ab8a5f768fc082a356f43c577082be208272d6965eb5507f"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-editorial-block-restrictions"
+digest = "sha256:5d77d7a43576db5578b9ae088cb7d39a66e6b253dc3ac4378e6a0a434f0dc855"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-events-shortcode-widget-to-block"
+digest = "sha256:60e4b1ac888cd6e976bf45a4ea6b0bd4529b0700a4c2ff50647830145231d6ec"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-glossary-format-type"
+digest = "sha256:b92c72d6138639a68b1bc79eecb8cd4aa4343061c39858558b85b1bdb86af84d"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-interactivity-product-filter"
+digest = "sha256:0e3eb356dead5c343ed1d5fedf7885e69c5d552668b5508f25c53b07463f5c8d"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-legacy-attributes-to-block-supports"
+digest = "sha256:6313e69c5b6a23df1a091188a71c57f54842379c3cd9d200ba4b9621b77dd011"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-media-card-variations-transforms"
+digest = "sha256:4d7b8d3366cbb84b9309bc845425827a52eecc8ca727e9b49515206214c0280f"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-pattern-overrides-custom-block"
+digest = "sha256:8fe30226b4739eeefc0c9b54b4e3d662d73cb8f7cae05267285e66607052ef9a"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-pricing-table-innerblocks-locking"
+digest = "sha256:866fd8381fc49a384bf7595c441c4adb3ec920072c4ab0a84d6d1688af0c4fdd"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-query-loop-upcoming-events-variation"
+digest = "sha256:b856f9a7c6703733bb5cc151ee2f2db8db92583073fa9eeb8a65eadf5c6ce9ee"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-recipe-metabox-to-editor"
+digest = "sha256:39bec67f5ec8cb053e0f68e8eb66c2758d396345a1f472c039b2b38eb6c2e978"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-team-directory-bindings-source"
+digest = "sha256:49ba37c94daa3aca248e6d4e62817d2d51bc8ea0830ea8f2b79c73b257ed14c2"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-testimonial-deprecation-chain"
+digest = "sha256:830fa639124072801c04f9213cbfc99de78d8fb646d41abbf10cf2d4578b1c17"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-theme-json-v3-migration"
+digest = "sha256:a3e1e438db0da960e8db0c9c54b089260df68728ed0ce0cba1e3042b58846177"
+
+[[tasks]]
+name = "wp-swe-bench/blocks-toc-static-to-dynamic"
+digest = "sha256:28a20c3df4f1bd13c666e43dba180168e03966448b2e918bd29da8d9ac0516ef"
+
+[[tasks]]
+name = "wp-swe-bench/bugfix-duplicate-post-meta-slashes"
+digest = "sha256:5b3778bcf4471f311d17d87b70a88b70c8f905b38ebe520db6c40ec35f010877"
+
+[[tasks]]
+name = "wp-swe-bench/bugfix-events-timezone-dst"
+digest = "sha256:0da0ff6c9c4fa4b6ce32a74ecb6345848fa84781fca3cc567d11ddce31ac518d"
+
+[[tasks]]
+name = "wp-swe-bench/bugfix-metabox-rest-meta-race"
+digest = "sha256:9221c74a8cb0daee26aba83712f55c5f394319be34b2195c9d7445df2bba7330"
+
+[[tasks]]
+name = "wp-swe-bench/bugfix-rewrite-rules-collision"
+digest = "sha256:6fe16e63e3120234f6a17d96e9c7015059a5e3d9d330aed7098875c72433f3a0"
+
+[[tasks]]
+name = "wp-swe-bench/bugfix-search-replace-serialized"
+digest = "sha256:ae3346857deee84082abfd42cdc597be4bd59b380cbb02cf2f007e09b05ab562"
+
+[[tasks]]
+name = "wp-swe-bench/bugfix-wordpress-importer-url-rewriting"
+digest = "sha256:f4da945cf781022098231396b01c3078bb687a1d236532123469b0db199da0b8"
+
+[[tasks]]
+name = "wp-swe-bench/perf-archive-meta-query-denormalize"
+digest = "sha256:9e2a3925454cde11badc41c1ba6a7d126a96816ef9661047629c712f101d0120"
+
+[[tasks]]
+name = "wp-swe-bench/perf-autoload-options-bloat-migration"
+digest = "sha256:30e83ba0361a2b12342e57b9473186c8f6dabcdc1771b83435edfb08c6b52103"
+
+[[tasks]]
+name = "wp-swe-bench/perf-conditional-asset-loading"
+digest = "sha256:2d4458fbc8009f64a552987e3a1803f4f46f678eea9e07a1a3c83cb68ce1f890"
+
+[[tasks]]
+name = "wp-swe-bench/perf-related-posts-n-plus-one"
+digest = "sha256:3cde1c2ebf94e7e6e8dc1196fd6f2921249a5b0e38e492f35727d00a26fcc54b"
+
+[[tasks]]
+name = "wp-swe-bench/perf-stats-cache-invalidation"
+digest = "sha256:4bbe8cbef2d066395b6c4d32b291f82d93d2c76f94f44df401898efb659edc0b"
+
+[[tasks]]
+name = "wp-swe-bench/rest-admin-ajax-to-rest-migration"
+digest = "sha256:96ce26c3aa41847589a8d17a867b174d86b7fbbd7263cf8cad06f2c79efd0a8a"
+
+[[tasks]]
+name = "wp-swe-bench/rest-batch-support"
+digest = "sha256:5f8a9ef6191384f24ba641052c389ea62d31555a27cf94188aa6ff471f65fd90"
+
+[[tasks]]
+name = "wp-swe-bench/rest-bookings-controller-schema"
+digest = "sha256:405ca5c002c7d137bfca1fac7210f88c3ad7148c4ea3f7b7614cd983e94f8583"
+
+[[tasks]]
+name = "wp-swe-bench/rest-custom-table-resource-controller"
+digest = "sha256:faa7cd75b30218941d75e2fc8bbcf4f8e8064e50ff0fab63dbae19d6bf6a5080"
+
+[[tasks]]
+name = "wp-swe-bench/rest-member-directory-visibility"
+digest = "sha256:42a692c0ba3590bf7439627cf924f98fa40bb6bd7a97ef04714448c35c49b499"
+
+[[tasks]]
+name = "wp-swe-bench/rest-meta-registration-revisions"
+digest = "sha256:1cab8b25660b84dfadc58d4e349cd3644dbb7941aaa28d4615d31d39fbb0d6ad"
+
+[[tasks]]
+name = "wp-swe-bench/rest-relationship-links-embedding"
+digest = "sha256:9de05a2c63f1031a2d9a3c60d82b5a5460adb3e3efd1094d71b3af14bf6aa48f"
+
+[[tasks]]
+name = "wp-swe-bench/rest-settings-endpoint-react-page"
+digest = "sha256:57ab79393131037f8f48b5280bcaa2130e9da6129f5f80ee3da9ee6bc5aa7cf7"
+
+[[tasks]]
+name = "wp-swe-bench/rest-webhook-app-passwords-hmac"
+digest = "sha256:f2214e62d1b4eb59eb7d274ba114f113c4869ddb864af852142159962a1305a6"
+
+[[tasks]]
+name = "wp-swe-bench/security-contact-forms-audit"
+digest = "sha256:4de56359ac0072f4ec0cdf64d0f4a8f320bf25a66d10599d47334e3f20d2da8c"
+
+[[tasks]]
+name = "wp-swe-bench/security-rest-idor-data-leak"
+digest = "sha256:7f770780c6947f2ebda8a15ec382b0c0ec80c29813f0c9cb4ad0614da1a4d7f4"
+
+[[tasks]]
+name = "wp-swe-bench/security-ssrf-object-injection-embed"
+digest = "sha256:757db68234aeda7b88a9facf4035a64aa582ed68860a68bf6805bf15f73f21c6"
+
