@@ -93,6 +93,14 @@ Trials that failed for infrastructure reasons (agent crashed or could not start,
 listed but excluded from the pass rate; re-run them with `harbor jobs resume -p <job> -f <ErrorType>`.
 Agent timeouts count as failures.
 
+Rate limits: with many trials in parallel, providers answer `429`/`ApiRateLimitError`. Lower `-n`
+and let Harbor retry (`-r 3 --retry-include ApiRateLimitError`). `harbor jobs resume` reuses the job's
+saved settings, so to change concurrency or retries for a resume, edit `n_concurrent_trials` / `retry`
+in both `config.json` and `lock.json` of the job directory. **Multi-step tasks:** Harbor records an
+agent crash in a step on that step only, not on the trial, so neither Harbor's retries nor
+`resume -f` see it (and Harbor Hub counts the trial as completed); `tools/report.py` does check the
+steps. To re-run such trials, delete their trial directories and run `harbor jobs resume -p <job>`.
+
 `reward.json` contains the binary `reward` (1 iff every required check passed) plus diagnostic
 sub-scores per check (e.g. `phpunit`, `e2e`, `build`, `integrity`, `no_fatals` and the soft `wpcs`
 score) and `required_passed` / `required_total`.
@@ -190,9 +198,27 @@ and lockfiles; for multi-step tasks, cumulative after the last step).
 | `security-rest-idor-data-leak` | security | very-hard | 6 | 1 | 6 files, +294/−100 | ✅ 1 | ✅ 0 | ✅ 0 |
 | `security-ssrf-object-injection-embed` | security | very-hard | 7 | 1 | 7 files, +359/−47 | ✅ 1 | ✅ 0 | ✅ 0 |
 
+### Publishing the dataset (maintainers)
+
+The dataset manifest (`dataset.toml`, created with `harbor dataset init`) lives at the repository
+root and references every task by content digest. `harbor publish` only auto-publishes tasks that are
+*immediate* subdirectories of a dataset, and ours live in `tasks/`, so publish the tasks explicitly,
+in the same command and before the dataset:
+
+```bash
+git status --short --ignored tasks/   # must print nothing: stray files change digests and get published
+harbor publish tasks . --public       # tasks first, then the dataset (digests are synced automatically)
+```
+
+A task's digest covers every file in its directory, including untracked ones (`__pycache__/`,
+`build/`, `node_modules/` from local testing, editor swap files); remove them first
+(`git clean -ndX tasks/` shows what would be deleted). Otherwise the dataset fails with
+"Task not found (likely not published yet)" or points at task versions that differ from the repo.
+
 ### Agent results
 
-Not yet piloted with real agents. See [docs/DIFFICULTY.md](docs/DIFFICULTY.md) for the calibration plan.
+Published runs live in [`results/`](results/), generated with `tools/report.py` (see above).
+See [docs/DIFFICULTY.md](docs/DIFFICULTY.md) for the calibration plan.
 
 ## Contributing tasks
 
